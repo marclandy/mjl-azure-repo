@@ -79,8 +79,6 @@ This post outlines critical Azure network architecture and security decisions re
 
 </details>
 
----
-
 <details>
 <summary>🌐 <strong>Service Endpoints (Legacy)</strong></summary>
 
@@ -95,6 +93,8 @@ This post outlines critical Azure network architecture and security decisions re
 | **Modern Guidance**     | Prefer Private Endpoints for new deployments, reserve Service Endpoints for existing integrations or transitional states                                     |
 
 </details>
+
+---
 
 ## References & Inspiration  
 - [<>](<>) — Azure Network Architecture & Security
