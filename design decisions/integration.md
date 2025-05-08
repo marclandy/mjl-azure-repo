@@ -5,15 +5,10 @@
 ## 🚀 Purpose  
 This post outlines critical Azure network architecture and security decisions required to support a scalable and secure Microsoft Azure iPaaS environment. Focus is placed on enabling secure connectivity and integration patterns using Logic Apps Standard, API Management, and Service Bus.
 
-## 📘 Use Case  
-Enterprise integration uplift using Azure iPaaS, ensuring secure, high-performance communication between:
-- On-premises systems (SAP, Dynamics, MFT)
-- Azure-native services (API Mgmt, Logic Apps, Functions, Service Bus)
-- SaaS systems (e.g., Dynamics 365)
-
 ---
 
-## 📚 Table of Contents
+## 📘 Use Case 
+Enables secure intra-Azure connectivity and private access to Azure services from integration components (e.g., Logic Apps, API Mgmt).
 - [Azure Virtual Network (VNet)](#azure-virtual-network-vnet)
 - [VNet Peering](#vnet-peering)
 - [Subnet Design](#subnet-design)
