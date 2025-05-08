@@ -62,8 +62,6 @@ This post outlines critical Azure network architecture and security decisions re
 ## 📘 Use Case : Private Connectivity for Azure iPaaS
 **Purpose**: Ensures that integration services are accessed securely over Microsoft's backbone, not the public internet.
 
----
-
 <details>
 <summary>🔐 <strong>Private Endpoints</strong></summary>
 
