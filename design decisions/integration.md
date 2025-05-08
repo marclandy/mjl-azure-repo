@@ -15,7 +15,7 @@ This post outlines critical Azure network architecture and security decisions re
 
 ---
 <details>
-<summary>## Azure Virtual Network (VNet)</summary>
+## <summary> Azure Virtual Network (VNet) </summary>
 
 | Design Decision Area      | Guidance |
 |---------------------------|----------|
