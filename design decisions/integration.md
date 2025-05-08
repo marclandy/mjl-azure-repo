@@ -59,6 +59,33 @@ This post outlines critical Azure network architecture and security decisions re
 
 ---
 
+## 📘 Use Case : Private Connectivity for Azure iPaaS
+**Purpose**: Ensures that integration services are accessed securely over Microsoft's backbone, not the public internet.
+
+## 🔐 Private Endpoints
+
+| **Aspect**              | **Design Decision**                                                                                                                                           |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Purpose**             | Enables private access to PaaS services (API Mgmt, Function Apps, Service Bus) via Azure Private Link                                                        |
+| **Security Benefits**   | Eliminates public exposure, restricts access through NSGs and firewalls, supports RBAC and logging                                                            |
+| **Network Planning**    | Requires a dedicated subnet per private endpoint (for optimal management), DNS updates to resolve to private IPs                                              |
+| **Integration Scope**   | API Mgmt (internal tier), Standard/Isolated Function Apps, Premium-tier Service Bus                                                                           |
+| **Monitoring**          | Integrate with NSG flow logs and Azure Monitor to trace and alert on traffic patterns                                                                         |
+
+---
+
+## 🌐 Service Endpoints (Legacy)
+
+| **Aspect**              | **Design Decision**                                                                                                                                           |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Purpose**             | Provides optimized routing to Azure services over Azure backbone without public internet exposure                                                            |
+| **Security Benefits**   | Limits access to specific VNet/subnet by service-level firewall settings                                                                                      |
+| **Use Cases**           | Suitable for legacy services or regions where Private Link is not yet available                                                                               |
+| **Drawbacks**           | Services are still addressable publicly, and do not support granular control like Private Endpoints                                                           |
+| **Modern Guidance**     | Prefer Private Endpoints for new deployments, reserve Service Endpoints for existing integrations or transitional states                                     |
+
+---
+
 ## References & Inspiration  
 - [<>](<>) — Azure Network Architecture & Security
 
