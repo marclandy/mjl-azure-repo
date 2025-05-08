@@ -62,7 +62,12 @@ This post outlines critical Azure network architecture and security decisions re
 ## 📘 Use Case : Private Connectivity for Azure iPaaS
 **Purpose**: Ensures that integration services are accessed securely over Microsoft's backbone, not the public internet.
 
-## 🔐 Private Endpoints
+---
+
+<details>
+<summary>🔐 <strong>Private Endpoints</strong></summary>
+
+<br>
 
 | **Aspect**              | **Design Decision**                                                                                                                                           |
 |-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -72,9 +77,14 @@ This post outlines critical Azure network architecture and security decisions re
 | **Integration Scope**   | API Mgmt (internal tier), Standard/Isolated Function Apps, Premium-tier Service Bus                                                                           |
 | **Monitoring**          | Integrate with NSG flow logs and Azure Monitor to trace and alert on traffic patterns                                                                         |
 
+</details>
+
 ---
 
-## 🌐 Service Endpoints (Legacy)
+<details>
+<summary>🌐 <strong>Service Endpoints (Legacy)</strong></summary>
+
+<br>
 
 | **Aspect**              | **Design Decision**                                                                                                                                           |
 |-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -84,7 +94,7 @@ This post outlines critical Azure network architecture and security decisions re
 | **Drawbacks**           | Services are still addressable publicly, and do not support granular control like Private Endpoints                                                           |
 | **Modern Guidance**     | Prefer Private Endpoints for new deployments, reserve Service Endpoints for existing integrations or transitional states                                     |
 
----
+</details>
 
 ## References & Inspiration  
 - [<>](<>) — Azure Network Architecture & Security
