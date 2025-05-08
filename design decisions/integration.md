@@ -24,6 +24,7 @@ This post outlines critical Azure network architecture and security decisions re
 | **Security Controls**     | Apply NSGs at subnet or NIC level to restrict traffic; use ASGs to group services dynamically. |
 | **Private Access**        | Integrate Private Endpoints and Private Link for services like Service Bus, Logic Apps, Key Vault, to restrict public exposure. |
 </details>
+
 ---
 
 ## VNet Peering
