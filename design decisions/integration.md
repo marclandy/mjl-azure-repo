@@ -15,6 +15,7 @@ This post outlines critical Azure network architecture and security decisions re
 
 ---
 <details>
+  
 <summary>
 ## Azure Virtual Network (VNet) 
 </summary>
@@ -25,6 +26,7 @@ This post outlines critical Azure network architecture and security decisions re
 | **Subnet Segmentation**   | Organize subnets by function (e.g., integration, apps, data) to isolate workloads and apply targeted controls. |
 | **Security Controls**     | Apply NSGs at subnet or NIC level to restrict traffic; use ASGs to group services dynamically. |
 | **Private Access**        | Integrate Private Endpoints and Private Link for services like Service Bus, Logic Apps, Key Vault, to restrict public exposure. |
+
 </details>
 
 ---
