@@ -14,8 +14,8 @@ This post outlines critical Azure network architecture and security decisions re
 - [VNet Integration for App Services / Logic Apps Standard](#vnet-integration-for-app-services--logic-apps-standard)
 
 ---
-
-## Azure Virtual Network (VNet)
+<details>
+<summary>## Azure Virtual Network (VNet)</summary>
 
 | Design Decision Area      | Guidance |
 |---------------------------|----------|
@@ -23,7 +23,7 @@ This post outlines critical Azure network architecture and security decisions re
 | **Subnet Segmentation**   | Organize subnets by function (e.g., integration, apps, data) to isolate workloads and apply targeted controls. |
 | **Security Controls**     | Apply NSGs at subnet or NIC level to restrict traffic; use ASGs to group services dynamically. |
 | **Private Access**        | Integrate Private Endpoints and Private Link for services like Service Bus, Logic Apps, Key Vault, to restrict public exposure. |
-
+</details>
 ---
 
 ## VNet Peering
