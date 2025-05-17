@@ -4,7 +4,7 @@
 
 **GitHub**: [https://github.com/adstuart/azure-privatelink-multiregion](https://github.com/adstuart/azure-privatelink-multiregion)
 
-### ❗ Problem
+### Problem
 
 Azure Site Recovery (ASR) supports private connectivity via **Azure Private Link**.
 
@@ -12,7 +12,7 @@ However, **multi-region Disaster Recovery (DR)** introduces DNS resolution compl
 
 - Re-protect operations often **fail** because DNS cannot resolve Private Endpoints in the DR region.
 
-### ✅ Proposed Solution
+### Proposed Solution
 
 - Create **regional Private DNS Zones** per region (do not centralize).
 - Deploy Private Endpoints for:
@@ -27,11 +27,11 @@ However, **multi-region Disaster Recovery (DR)** introduces DNS resolution compl
 
 ---
 
-## 🔄 ASR with Multi-Region Private Link
+## ASR with Multi-Region Private Link
 
 **GitHub**: [https://github.com/adstuart/azure-privatelink-multiregion-siterecovery-asr](https://github.com/adstuart/azure-privatelink-multiregion-siterecovery-asr)
 
-### 📘 Summary
+### Summary
 
 This guide provides a **practical, IaC-based walkthrough** for implementing multi-region Private Link with Azure Site Recovery (ASR).
 
@@ -42,7 +42,7 @@ It addresses key failure modes—especially DNS misconfiguration—during:
 
 ---
 
-### 🧱 Key Architecture Components
+### Key Architecture Components
 
 - ASR Vaults with Private Endpoints in **both regions**
 - Blob Storage Private Endpoints in **both regions**
@@ -50,7 +50,7 @@ It addresses key failure modes—especially DNS misconfiguration—during:
 
 ---
 
-### 🖼️ Reference Architecture Diagram
+### Reference Architecture Diagram
 
 > source :  aka.ms/alz/community (https://github.com/Azure/Enterprise-Scale/wiki/media/community-calls/jan-2025/ALZ-Community-Call-29012025.pdf)
 
@@ -58,7 +58,7 @@ It addresses key failure modes—especially DNS misconfiguration—during:
 
 ---
 
-### 🧠 Key Lessons
+### Key Lessons
 
 - **Shared or cross-region DNS resolution is unreliable** in DR scenarios.
 - Always **create and bind DNS zones regionally**.
@@ -70,7 +70,7 @@ It addresses key failure modes—especially DNS misconfiguration—during:
 
 ---
 
-### 🛠️ Tools & Techniques
+### Tools & Techniques
 
 - GitHub repo includes **ARM/Bicep templates**
 - **Wireshark** and **NSLookup** validate name resolution paths
