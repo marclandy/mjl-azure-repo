@@ -54,7 +54,7 @@ It addresses key failure modes—especially DNS misconfiguration—during:
 
 > Replace the image link below with your uploaded diagram (e.g., `/images/asr-privatelink-architecture.png`)
 
-![ASR Multi-Region Private Link Architecture](https://github.com/your-org/your-repo/blob/main/images/asr-privatelink-architecture.png)
+![ASR Multi-Region Private Link Architecture]([https://github.com/marclandy/mjl-azure-repo/blob/alz/images/asr-privatelink-architecture.png)])
 
 ---
 
