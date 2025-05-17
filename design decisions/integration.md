@@ -78,7 +78,7 @@ This post outlines critical Azure network architecture and security decisions re
 </details>
 
 <details>
-<summary>🌐 <strong>Service Endpoints (Legacy)</strong></summary>
+<summary><strong>Service Endpoints (Legacy)</strong></summary>
 
 <br>
 
