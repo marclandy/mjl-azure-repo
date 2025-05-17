@@ -52,7 +52,7 @@ It addresses key failure modes—especially DNS misconfiguration—during:
 
 ### 🖼️ Reference Architecture Diagram
 
-> Replace the image link below with your uploaded diagram (e.g., `/images/asr-privatelink-architecture.png`)
+> source :  aka.ms/alz/community (https://github.com/Azure/Enterprise-Scale/wiki/media/community-calls/jan-2025/ALZ-Community-Call-29012025.pdf)
 
 ![ASR Multi-Region Private Link Architecture](https://github.com/marclandy/mjl-azure-repo/blob/alz/images/asr-privatelink-architecture.png)
 
