@@ -121,10 +121,14 @@ Microsoft Links
 ## Technical Deep Dive for Network/Infra Architects
 
 <details>
-<summary> <strong> 
-  ### Device Lifecycle Management 
+<summary><strong> 
+
+### Device Lifecycle Management 
+
 </strong></summary>
+
 <br>
+
 *Platform Scope: Windows 10/11, macOS, iOS/iPadOS, Android Enterprise*
 
 #### 1. Provisioning & Enrollment
