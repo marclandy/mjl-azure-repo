@@ -227,8 +227,10 @@ Using Conditional Access + Device Compliance:
   - **Defender Security Baselines**
   - **Graph API** for automation and compliance analytics
 </details>
-### Application Management in Microsoft Intune
 
+<details>
+<summary> <strong>Application Management in Microsoft Intune</strong></summary>
+<br>
 **Scope**: Covers both **Mobile Application Management (MAM)** and **Mobile Device Management (MDM)**-based app delivery across:
 
 - **Windows 10/11 (Win32, MSI, UWP)**
@@ -352,8 +354,12 @@ This maps directly to your **"identity, app, device" trust plane model** in the 
 | **Cloud-Native Security** | MAM policies + Conditional Access + Defender Risk |
 | **Hybrid Workforce Enablement** | MAM-WE protects data on unmanaged devices |
 | **ZTP + App Delivery** | Autopilot integrates apps at provisioning for corporate users |
+</details>
 
-### Endpoint Security & Zero Trust Integration
+<details>
+<summary> <strong>Endpoint Security & Zero Trust Integration</strong></summary>
+
+<br>
 
 #### 1. 🔄 Microsoft Intune & Cisco ISE NAC Integration (Compliance API)
 
@@ -463,8 +469,12 @@ Here's a **layered view** of how these elements integrate:
 | **ZTNA** | Applying device identity and health for access control, combined with network segmentation. |
 | **VPN/App Isolation** | How Intune per-app VPN + managed apps enforce network/data boundaries. |
 | **Network Signal Flow** | The sequence between device connect, ISE posture check, Intune status, and conditional access response. |
+</details>
 
-### Monitoring, Reporting & Alerts in Modern EUC Architecture
+<details>
+<summary> <strong>Monitoring, Reporting & Alerts in Modern EUC Architecture</strong></summary>
+
+<br>
 
 **🎯 Purpose & Value**
 
@@ -589,8 +599,12 @@ Sentinel Rule ➜ Logic App ➜ Notify | Auto-Remediate | CA Block | Raise Incid
 | Intermediate | Scheduled workbook reports + alerts in Monitor |
 | Advanced | Sentinel-integrated alerts + automated response |
 | Optimized | Predictive analytics & AI-based risk scoring |
+</details>
 
-### Hybrid Integration with On-Prem Infrastructure (Intune + SCCM + AD)
+<details>
+<summary> <strong>Hybrid Integration with On-Prem Infrastructure (Intune + SCCM + AD)</strong></summary>
+
+<br>
 
 **Objective**: Enable modern management **without breaking existing enterprise investments** in Group Policy, Configuration Manager, and on-prem app delivery — while **bridging to Zero Trust** and cloud-first endpoint strategies.
 
@@ -811,8 +825,12 @@ Use this matrix to:
 - **Replace GPO** where supported by MDM policies (track gaps)
 - Use **Device Scope Tags and Role-Based Access Control (RBAC)** to support separation of duties across hybrid teams
 - Monitor success with **Endpoint Analytics**, **Update Compliance**, and **Security Baselines**
+</details>
 
-# Conditional Access & Network Enforcement -- Deep Dive
+<details>
+<summary> <strong>Conditional Access & Network Enforcement -- Deep Dive</strong></summary>
+
+<br>
 
 This document provides a consolidated deep dive on **Conditional Access (CA)** and **Network Enforcement**, combining identity, device, and network signals to support **Zero Trust** principles—**never trust, always verify**. It integrates **Microsoft Entra ID (formerly Azure AD)**, **Intune**, **Microsoft Defender for Endpoint**, **VPN/Wi-Fi**, and **Network Access Control (NAC)**. This is aligned with the architecture and intent outlined in the Enterprise EUC Reference Architecture.
 
@@ -956,7 +974,7 @@ Best Practices:
 | Intune Admin Center | Deploy VPN/Wi-Fi profiles, enforce compliance policies |
 | Defender Security Portal | View device health and risk posture |
 | Azure Monitor / Sentinel | Monitor CA outcomes, trigger alerts on violations |
-
+</details>
 **Microsoft links:**
 
 [CyberAutomationX](https://github.com/CyberAutomationX)/[SecureAzCloud-Scripts](https://github.com/CyberAutomationX/SecureAzCloud-Scripts)
