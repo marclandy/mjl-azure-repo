@@ -121,7 +121,7 @@ Microsoft Links
 ## Technical Deep Dive for Network/Infra Architects
 
 <details>
-<summary> <strong> ## Device Lifecycle Management</strong></summary>
+<summary> <strong> Device Lifecycle Management</strong></summary>
 
 <br>
 
