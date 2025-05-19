@@ -120,8 +120,9 @@ Microsoft Links
 
 ## Technical Deep Dive for Network/Infra Architects
 
-### Device Lifecycle Management
-
+<details>
+<summary> <strong> ### Device Lifecycle Management </strong></summary>
+<br>
 *Platform Scope: Windows 10/11, macOS, iOS/iPadOS, Android Enterprise*
 
 #### 1. Provisioning & Enrollment
@@ -223,7 +224,7 @@ Using Conditional Access + Device Compliance:
   - **Intune Remediations** (Proactive Scripts + Detection Rules)
   - **Defender Security Baselines**
   - **Graph API** for automation and compliance analytics
-
+</details>
 ### Application Management in Microsoft Intune
 
 **Scope**: Covers both **Mobile Application Management (MAM)** and **Mobile Device Management (MDM)**-based app delivery across:
