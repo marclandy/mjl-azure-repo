@@ -119,6 +119,154 @@ Microsoft Links
 [CyberAutomationX](https://github.com/CyberAutomationX)/[SecureAzCloud-Scripts](https://github.com/CyberAutomationX/SecureAzCloud-Scripts)
 
 ## Technical Deep Dive for Network/Infra Architects
+<details>
+<summary> <strong>Conditional Access & Network Enforcement -- Deep Dive</strong></summary>
+
+<br>
+
+This document provides a consolidated deep dive on **Conditional Access (CA)** and **Network Enforcement**, combining identity, device, and network signals to support **Zero Trust** principles—**never trust, always verify**. It integrates **Microsoft Entra ID (formerly Azure AD)**, **Intune**, **Microsoft Defender for Endpoint**, **VPN/Wi-Fi**, and **Network Access Control (NAC)**. This is aligned with the architecture and intent outlined in the Enterprise EUC Reference Architecture.
+
+## Strategic Purpose in Zero Trust EUC
+
+Conditional Access is the **policy engine** for EUC that makes dynamic access decisions based on:
+
+- Identity posture (user/group membership, risk level)
+- Device posture (compliance, join status, OS/platform)
+- Network context (trusted IPs, VPN/NAC, geolocation)
+- Real-time risk signals (from Defender or Entra ID Protection)
+- Application sensitivity (SaaS, internal, or critical workloads)
+
+The **core enforcement point (PEP)** is **Entra ID**, with conditional logic tightly coupled with **Intune**, **Defender for Endpoint**, and **network-based controls** to drive secure access to apps and data.
+
+## Core Capabilities & Enforcement Layers
+
+### 1. Policy-Based Access Control
+
+**What**: Centrally managed CA policies that combine identity, device, app, location, and risk signals.
+
+**How**: Defined using conditional logic:
+
+*If* user is in Group X, accessing App Y, from unmanaged device → *Then* require MFA + compliant device.
+
+Use Cases:
+
+- Enforce compliant & hybrid AAD-joined devices for Office 365, Salesforce, ServiceNow.
+- Block access from unsupported OS platforms or high-risk sign-ins.
+- Bypass MFA from trusted IP ranges or VPN.
+
+Best Practices:
+
+- Leverage **Named Locations** for geolocation- or IP-based rules.
+- Use **Entra ID Protection** for sign-in and user risk scoring.
+
+### 2. Device Compliance & Trust (Intune + Entra)
+
+**Device Requirements**:
+
+- Must be marked **compliant** (via Intune) or **Hybrid Azure AD Joined**.
+- Use **Device Filters** for fine-grained access (e.g., only iOS 16+ managed devices).
+
+**Example**: Block non-compliant BYO Windows/macOS/mobile devices from accessing sensitive workloads.
+
+### 3. Defender for Endpoint Risk-Based Access
+
+**Why**: Integrate **real-time device risk** posture into CA decisions.
+
+**Risk Enforcement Flow**:
+
+1. Defender detects device anomalies (AV status, vulnerabilities).
+2. Risk level (Low/Medium/High) sent to Entra ID.
+3. CA evaluates: High-risk → Block, Medium → Require MFA, Low → Allow.
+
+**Use Case**: Prevent access from compromised or vulnerable endpoints across any platform.
+
+### 4. Network-Aware Conditional Access
+
+**Techniques**:
+
+- Use **Named Locations**: Define trusted IPs (corporate offices, VPN gateways).
+- Configure **Conditional Access Filters**: OS type, client app, device platform.
+- Combine **NAC posture** + **network profile enforcement** to evaluate device trust before granting access.
+
+**Example Policies**:
+
+- Finance apps → accessible only from corporate Wi-Fi or trusted VPN.
+- Skip MFA from office IPs with validated NAC posture.
+
+### 5. Wi-Fi & VPN Enforcement via Intune
+
+**Wi-Fi Profiles**:
+
+- Push **802.1X** profiles using certificates (SCEP/PKCS).
+- Secure SSIDs with EAP-TLS or PEAP.
+
+**VPN Profiles**:
+
+- Define **Per-App VPN** for iOS/Android/Windows.
+- Integrate with 3rd-party VPN providers: Zscaler, Palo Alto, Cisco AnyConnect, F5 APM.
+
+**Policy**: Block access if VPN/Wi-Fi profiles are missing, misconfigured, or expired.
+
+## Mapping to EUC Architecture Pillars
+
+| **Pillar** | **Role of CA & Enforcement** |
+|------------|------------------------------|
+| **Identity Trust** | Entra ID + Conditional Access + Entra ID Protection |
+| **Device Trust** | Intune Compliance + Defender Risk + Device Filters |
+| **App Delivery** | App access governed by per-platform CA policies |
+| **Data Protection** | Trusted Wi-Fi, Per-App VPN, Network Restrictions |
+| **Zero Trust** | Runtime enforcement—identity, device, and network |
+
+## Architecture Workflow Example
+
+**Conditional Access Evaluation**:
+
+1. User requests app access (e.g., Microsoft 365).
+2. Entra ID triggers evaluation:
+   - Is user/group risky?
+   - Is device compliant + hybrid-joined?
+   - Trusted network IP/VPN/NAC?
+   - Device risk from Defender?
+3. Access Control Decision:
+   - ✅ Allow with MFA
+   - 🚫 Block access
+   - ⚠️ Require compliant device or VPN
+
+## Real-World Conditional Access Scenarios
+
+| **Scenario** | **Policy Logic** |
+|--------------|------------------|
+| Block risky mobile access | Device risk = High AND platform = iOS/Android → Block access |
+| Require compliant device for SharePoint | App = SharePoint AND device NOT compliant → Block access |
+| BYO access (Outlook + MAM only) | Platform = iOS AND unmanaged → Allow Outlook only + App Protection Policy |
+| Bypass MFA in trusted office | IP = Named Location (office/VPN) → Skip MFA |
+| Finance app via VPN only | Require device on trusted IP + Per-App VPN profile |
+
+## Maturity Model
+
+| **Level** | **Capability Description** |
+|-----------|----------------------------|
+| 1️⃣ Basic | Manual MFA enforcement; no device or risk evaluation |
+| 2️⃣ Intermediate | Conditional Access with device compliance and named locations |
+| 3️⃣ Advanced | Integrated Defender risk + platform-specific app control |
+| 4️⃣ Optimized | Full runtime policy enforcement with automation (Sentinel, Intune, etc.) |
+
+## Reporting, Simulation & Policy Analytics
+
+- **Entra Sign-In Logs**: See each login's CA policy result.
+- **Azure Monitor & Sentinel**: Correlate CA failures or non-compliant devices.
+- **Policy Analytics (Preview)**: Simulate and test policy impact before rollout.
+- **Workbooks**: Dashboards for blocked attempts, high-risk users, and app-specific access patterns.
+
+## Admin Tools & Portals
+
+| **Tool** | **Functionality** |
+|----------|-------------------|
+| Entra Admin Center | Define, simulate, and analyze Conditional Access policies |
+| Intune Admin Center | Deploy VPN/Wi-Fi profiles, enforce compliance policies |
+| Defender Security Portal | View device health and risk posture |
+| Azure Monitor / Sentinel | Monitor CA outcomes, trigger alerts on violations |
+</details>
 
 <details>
 <summary> <strong> Device Lifecycle Management</strong></summary>
@@ -361,11 +509,11 @@ This maps directly to your **"identity, app, device" trust plane model** in the 
 
 <br>
 
-#### 1. 🔄 Microsoft Intune & Cisco ISE NAC Integration (Compliance API)
+#### 1. Microsoft Intune & Cisco ISE NAC Integration (Compliance API)
 
 This integration allows **Cisco ISE** to query Intune for **real-time device compliance status** before granting network access (802.1X/EAP-TLS).
 
-**✅ Key Integration Components:**
+** Key Integration Components:**
 
 | **Component** | **Description** |
 |--------------|------------------|
@@ -374,7 +522,7 @@ This integration allows **Cisco ISE** to query Intune for **real-time device com
 | **Microsoft Graph Security API (Compliance API)** | Cisco ISE queries device compliance via this API. |
 | **Cisco pxGrid** | Acts as a broker between ISE and Microsoft Intune. |
 
-**⚙️ Integration Flow:**
+** Integration Flow:**
 
 1. User connects to Wi-Fi/Ethernet (802.1X auth).
 2. Cisco ISE identifies user/device.
@@ -382,18 +530,18 @@ This integration allows **Cisco ISE** to query Intune for **real-time device com
 4. If **compliant**, ISE allows access (VLAN permit); if **non-compliant**, redirects to remediation VLAN or captive portal.
 5. Optionally enforces **dynamic ACLs** or **SGTs (Scalable Group Tags)**.
 
-**🛠 Design Considerations:**
+** Design Considerations:**
 
 - Requires **Azure AD P1+ licensing**.
 - Device must be **Azure AD-joined or hybrid-joined** and enrolled with Intune.
 - Must configure **Trusted IPs** in Conditional Access to prevent looping issues with hybrid auth scenarios.
 - Works best with **certificate-based authentication** (e.g., EAP-TLS via Intune + SCEP).
 
-#### 2. 🛡️ Endpoint Security Controls via Intune
+#### 2.  Endpoint Security Controls via Intune
 
 Network architects should understand **Intune's policy enforcement at the endpoint**, especially as it affects posture assessment.
 
-**🔑 Endpoint Security Policy Types:**
+** Endpoint Security Policy Types:**
 
 - **Antivirus (Microsoft Defender for Endpoint)**
 - **Disk Encryption (BitLocker / FileVault)**
@@ -404,9 +552,9 @@ Network architects should understand **Intune's policy enforcement at the endpoi
 
 These controls ensure that endpoints are hardened **before they can participate in the network**, enforcing Zero Trust assumptions.
 
-#### 3. 🌐 Support for Zero Trust Network Access (ZTNA) Principles
+#### 3. Support for Zero Trust Network Access (ZTNA) Principles
 
-**🔍 Core ZTNA Capabilities Enabled by Intune:**
+** Core ZTNA Capabilities Enabled by Intune:**
 
 | **Principle** | **Intune Capability** |
 |---------------|------------------------|
@@ -414,7 +562,7 @@ These controls ensure that endpoints are hardened **before they can participate 
 | **Use least-privilege access** | Scoped Conditional Access, device tagging, user roles. |
 | **Assume breach** | Continual enforcement of compliance, AV signals from Defender, app control. |
 
-**🔧 Device Controls in ZTNA:**
+** Device Controls in ZTNA:**
 
 - Device must be **compliant**, **health-checked**, and **identity-bound**.
 - Conditional Access can enforce:
@@ -425,12 +573,12 @@ These controls ensure that endpoints are hardened **before they can participate 
 - **Session controls** using Microsoft Defender + Defender for Cloud Apps (MCAS):
   - Block upload/download based on sensitivity or device posture.
 
-**📡 Network Relevance:**
+** Network Relevance:**
 
 - Combined with **per-app VPN** or **Zscaler/Netskope**, you can restrict traffic to only secured tunnels.
 - Can trigger **remediation flows** or quarantine VLANs via NAC if ZT posture is violated.
 
-**🧩 Architectural Integration Snapshot**
+** Architectural Integration Snapshot**
 
 Here's a **layered view** of how these elements integrate:
 
@@ -460,7 +608,7 @@ Here's a **layered view** of how these elements integrate:
 +----------------------------------------------------------+
 ```
 
-**🧭 Summary — What a Network & Infra Architect Should Know**
+** Summary — What a Network & Infra Architect Should Know**
 
 | **Domain** | **Key Knowledge** |
 |------------|-------------------|
@@ -472,11 +620,211 @@ Here's a **layered view** of how these elements integrate:
 </details>
 
 <details>
+<summary> <strong>Network and Connectivity Configuration</strong></summary>
+
+<br>
+
+## Objective
+
+Enable **secure, user-transparent connectivity** to enterprise resources across **corporate, home, and public networks**, **minimizing lateral movement**, and enforcing **per-app access** and **least-privilege** principles via:
+
+- Managed Wi-Fi access
+- Certificate-based authentication
+- Split/full tunnel VPNs
+- Per-app VPNs for BYOD
+- Proxy and isolation enforcement for data protection
+
+## Key Capabilities
+
+### 1. Wi-Fi Profiles with Certificate-Based Authentication
+
+#### What It Does
+
+Automates secure Wi-Fi onboarding using **EAP-TLS** or **PEAP** for:
+
+- Corporate SSIDs
+- Per-user/device authentication
+- Elimination of shared secrets
+
+#### Configuration & Architecture
+
+- Delivered via **Intune** (or third-party MDM like JAMF, Workspace ONE)
+- Authenticated via **802.1X + RADIUS + NPS/ISE/ClearPass**
+- Certificate deployed using:
+  - **SCEP/NDES**
+  - **PKCS (via Intune or 3rd-party CA)**
+
+#### Best Practices
+
+| **Capability** | **Recommendation** |
+|----------------|-------------------|
+| Protocol | Prefer **EAP-TLS** (certificate-based) over PEAP |
+| Certificate lifecycle | Automate renewal via SCEP or PKCS |
+| Segmentation | Use separate SSID for BYOD with NAC controls |
+| NAC Enforcement | Integrate with **Azure Conditional Access** where possible |
+
+#### Related Workflows
+
+- Devices enroll via Intune → receive cert → auto-connect to Wi-Fi
+- Enforces Zero Trust at **network layer**
+
+### 2. VPN Profiles: Multi-Vendor, Multi-Platform Support
+
+#### Supported Vendors
+
+- **Cisco AnyConnect**
+- **F5 BIG-IP / APM**
+- **Zscaler ZIA / ZPA**
+- **Palo Alto GlobalProtect**
+- **Microsoft Always On VPN (AOVPN)** for Windows
+
+#### MDM Delivery
+
+- Intune or UEM pushes:
+  - Authentication method (cert, username/password, MFA)
+  - Connection type (IKEv2, SSL, IPsec)
+  - Split-tunnel or full-tunnel options
+
+#### Zero Trust Consideration
+
+Use VPN not as a blanket access enabler but as a **per-app or policy-triggered channel** based on:
+
+- Device compliance
+- App sensitivity
+- Network location
+
+#### Best Practices
+
+| **Use Case** | **Configuration** |
+|--------------|------------------|
+| Managed corporate use | Always-On VPN with certificate auth |
+| BYOD or high risk | Per-App VPN with conditional access |
+| Vendor access | Short-lived, role-based VPN access with Just-in-Time |
+
+### 3. Per-App VPN Configuration (iOS/macOS)
+
+#### What It Enables
+
+- Tunnel **only specific apps** through VPN
+- Avoids exposing entire device traffic
+- Especially relevant for BYOD or contractor devices
+
+#### Supported Platforms
+
+- **iOS**
+- **macOS**
+- Some support on **Android Enterprise** with Work Profiles
+
+#### Delivery via Intune
+
+- Define:
+  - Apps triggering VPN (e.g., Outlook, Edge, SAP Fiori)
+  - VPN vendor and config
+  - Authentication method
+
+#### Example Use Cases
+
+- Only tunnel **Microsoft 365** apps or **Line of Business** apps
+- Avoid routing **Netflix**, personal email, etc., through corporate VPN
+
+### 4. Proxy Settings & Network Isolation (e.g., WIP)
+
+#### Proxy Configuration
+
+- Enforce **PAC files**, **static proxies**, or **Zscaler Client Connector**
+- Protect outbound traffic from **unfiltered internet access**
+
+#### Windows Information Protection (WIP)
+
+- Provides **data separation**:
+  - "Work" vs "Personal" context
+  - Enforces rules like "Only corporate apps can access corp network"
+- Redirects corporate traffic via configured proxy or VPN
+- Policy-based enforcement for copy/paste, data exfiltration
+
+#### Key Isolation Controls
+
+- Block copy/paste from **corporate Outlook → personal Gmail**
+- Enforce **network boundary rules** (corporate resources only over trusted network)
+
+### 5. Integration with NPS / RADIUS / 802.1X
+
+#### Authentication Flow
+
+1. Device connects to SSID
+2. Auth request passed to **NPS (Windows) or ISE/ClearPass**
+3. Certificate or user credential validated via **RADIUS**
+4. Connection permitted or denied based on:
+   - Group membership
+   - Device posture
+   - VLAN/NAC policies
+
+#### Policy Enforcements
+
+- VLAN assignment based on device compliance
+- Deny unmanaged devices or place into **guest VLAN**
+- Combine with **Intune Compliance + Conditional Access**
+
+#### Future Integration
+
+- Leverage **RADIUS accounting logs** for correlating user access
+- Integrate with **Azure Sentinel / SIEMs** for anomaly detection
+
+## Architecture Mapping to EUC Reference Stack
+
+| **Layer** | **Network & Connectivity Capability** |
+|-----------|--------------------------------------|
+| **Device Management** | Certificate-based Wi-Fi, VPN profile deployment via Intune |
+| **Network Security** | NAC, 802.1x, RADIUS auth with conditional VLAN assignment |
+| **Data Protection** | Proxy enforcement, WIP for isolation of personal vs. work apps/data |
+| **Secure Access** | Per-app VPNs, Always-On VPN, integration with Conditional Access |
+
+## Real-World Configuration Examples
+
+### Example 1: Wi-Fi Profile with EAP-TLS for Windows 10/11
+
+- SSID: CorpNet
+- Authentication: EAP-TLS
+- Root CA: Internal PKI Root CA
+- Certificate Delivery: Intune SCEP with auto-renewal
+- NPS Policy: Group = "Intune-Managed" → VLAN = Corporate
+
+### Example 2: Per-App VPN for iOS (Zscaler)
+
+```json
+{
+  "Trigger": "com.microsoft.outlook",
+  "VPNType": "IPSec",
+  "Authentication": "Certificate",
+  "VPN Vendor": "Zscaler",
+  "Proxy": "Z-Tunnel via PAC file"
+}
+```
+
+## Monitoring & Compliance
+
+- **Intune**: Profile deployment success, cert status
+- **VPN logs**: Vendor dashboards (Zscaler, Palo Alto, Cisco)
+- **RADIUS logs**: Integration with SIEM
+- **Microsoft Defender for Endpoint**: Detect anomalies in connection behavior
+- **Azure Sentinel**: Correlate Wi-Fi/VPN access with identity behavior
+
+## Maturity Model: Network & Connectivity
+
+| **Level** | **Capability** |
+|-----------|---------------|
+| 1️⃣ | Manual VPN, shared Wi-Fi passwords |
+| 2️⃣ | Certificate-based Wi-Fi and VPN via MDM |
+| 3️⃣ | Per-App VPN, network isolation with WIP |
+| 4️⃣ | Dynamic NAC/VLAN, real-time CA and Defender integration |
+</details>
+
+<details>
 <summary> <strong>Monitoring, Reporting & Alerts in Modern EUC Architecture</strong></summary>
 
 <br>
 
-**🎯 Purpose & Value**
+**Purpose & Value**
 
 The **"Monitoring, Reporting & Alerts"** capability ensures:
 
@@ -487,9 +835,9 @@ The **"Monitoring, Reporting & Alerts"** capability ensures:
 
 This aligns directly with your reference architecture's **EUC Operations**, **Zero Trust enforcement**, and **device trust pillar** by enabling **automated observability**.
 
-**🧱 Key Capability Breakdown**
+**Key Capability Breakdown**
 
-#### 1. ✅ Device Compliance Dashboards
+#### 1. Device Compliance Dashboards
 
 - **Tooling**: Intune Compliance Center, Microsoft Endpoint Manager, Entra ID Portal
 - **Function**: Aggregates compliance state based on:
@@ -502,7 +850,7 @@ This aligns directly with your reference architecture's **EUC Operations**, **Ze
   - Define a **"baseline" compliance policy** for all device classes
   - Integrate with **RBAC + scope tags** to enable fleet-specific reporting (e.g., BYOD, kiosk, hybrid user)
 
-#### 2. 📡 Real-Time Reporting for Configuration Drift, App Deployment & Policy Errors
+#### 2. Real-Time Reporting for Configuration Drift, App Deployment & Policy Errors
 
 - **Sources**:
   - Intune's built-in "**Endpoint analytics**"
@@ -523,7 +871,7 @@ IntuneDevices
 | summarize count() by DeviceOSType, DeviceName
 ```
 
-#### 3. 🧩 Integration with Log Analytics, Azure Monitor & Microsoft Sentinel
+#### 3. Integration with Log Analytics, Azure Monitor & Microsoft Sentinel
 
 - **Objective**: Enterprise-grade **observability**, threat correlation, alerting
 - **Capabilities**:
@@ -538,7 +886,7 @@ IntuneDevices
     - Create **Analytics Rules** (e.g., non-compliant device + suspicious login = high-priority alert)
 - **Outcome**: Unified endpoint security + ops view within **SOC and platform engineering teams**
 
-#### 4. 🚨 Alerts for Jailbreak / Root Detection, Compromised Devices, Non-Compliance
+#### 4. Alerts for Jailbreak / Root Detection, Compromised Devices, Non-Compliance
 
 - **Platforms**:
   - iOS/Android: Jailbreak/root detected via **Intune device compliance policies**
@@ -563,7 +911,7 @@ DeviceComplianceOrg
 - **Autonomous CA policy block**
 - **Intune remediation script**
 
-**🧩 Integration Patterns with Your EUC Reference Architecture**
+** Integration Patterns with Your EUC Reference Architecture**
 
 | **EUC Tier** | **Monitoring Touchpoint** |
 |--------------|---------------------------|
@@ -573,7 +921,7 @@ DeviceComplianceOrg
 | **Endpoint Protection (AV, EDR)** | Defender alerts + Sentinel correlation |
 | **Observability & Automation** | Logic Apps, Azure Monitor alerts, ServiceNow integration |
 
-**🌐 Real-World Implementation Blueprint**
+** Real-World Implementation Blueprint**
 
 **1. Data Collection Flow**
 
@@ -591,7 +939,7 @@ Sentinel Rule ➜ Logic App ➜ Notify | Auto-Remediate | CA Block | Raise Incid
 - Devices Without Required App X
 - Jailbroken / Rooted Mobile Devices
 
-**🧭 Maturity Model**
+** Maturity Model**
 
 | **Level** | **Capability** |
 |-----------|----------------|
@@ -608,19 +956,19 @@ Sentinel Rule ➜ Logic App ➜ Notify | Auto-Remediate | CA Block | Raise Incid
 
 **Objective**: Enable modern management **without breaking existing enterprise investments** in Group Policy, Configuration Manager, and on-prem app delivery — while **bridging to Zero Trust** and cloud-first endpoint strategies.
 
-#### 🔁 1. Co-management with Microsoft Configuration Manager (SCCM)
+#### 1. Co-management with Microsoft Configuration Manager (SCCM)
 
-**🔹 Purpose**
+** Purpose**
 
 Allows devices to be **managed concurrently** by both **Intune (cloud)** and **SCCM (on-prem)**, enabling **phased workloads migration**.
 
-**🔹 Architecture**
+** Architecture**
 
 - Devices are joined to **Active Directory (AD)** and **enrolled into Intune**
 - Co-management agent (SCCM client) connects to on-prem infrastructure
 - Device syncs with **Azure AD** and **Microsoft Endpoint Manager**
 
-**🔹 Workload Split Options**
+** Workload Split Options**
 
 You can configure which workloads are managed by SCCM vs. Intune:
 
@@ -635,24 +983,24 @@ You can configure which workloads are managed by SCCM vs. Intune:
 
 Your blog's principle of **progressive modernization** aligns well here: allow legacy infra to coexist while progressively migrating to cloud-native control.
 
-#### 🧩 2. Hybrid Azure AD Join (HAADJ) for GPO + Intune Coexistence
+#### 2. Hybrid Azure AD Join (HAADJ) for GPO + Intune Coexistence
 
-**🔹 Use Case**
+** Use Case**
 
 - Enables **domain-joined** devices to **register in Azure AD**
 - Supports **Intune enrollment + GPO** coexistence
 
-**🔹 Why It Matters**
+** Why It Matters**
 
 - Enterprises with heavy Group Policy Object (GPO) dependencies can maintain those controls **while layering Intune MDM policies**
 - Enables **Conditional Access**, **Cloud-based SSO**, and **Endpoint Analytics**
 
-**🔹 Architecture Notes**
+** Architecture Notes**
 
 - Requires **Azure AD Connect**
 - Devices authenticate via **Kerberos to on-prem AD**, while still leveraging **cloud identity for modern apps**
 
-**🔹 GPO vs Intune Policy Handling**
+** GPO vs Intune Policy Handling**
 
 | **Scenario** | **GPO** | **Intune** |
 |--------------|---------|------------|
@@ -662,9 +1010,9 @@ Your blog's principle of **progressive modernization** aligns well here: allow l
 
 From your EUC architecture lens: HAADJ is critical for **stage-2 modernization** — still tethered to AD, but enabling cloud app access and identity controls.
 
-#### 🔐 3. On-Prem Certificate Deployment via Intune SCEP/NDES Connector
+#### 3. On-Prem Certificate Deployment via Intune SCEP/NDES Connector
 
-**🔹 Purpose**
+** Purpose**
 
 Provide certificates for:
 
@@ -672,7 +1020,7 @@ Provide certificates for:
 - VPN (e.g., Cisco AnyConnect, Palo Alto)
 - App authentication (e.g., Outlook with S/MIME)
 
-**🔹 Components**
+** Components**
 
 | **Component** | **Role** |
 |---------------|----------|
@@ -680,14 +1028,14 @@ Provide certificates for:
 | NDES | Issues SCEP certificates via Microsoft CA |
 | Microsoft CA | Generates and tracks issued certs |
 
-**🔹 How It Works**
+** How It Works**
 
 1. Intune sends certificate request to Connector
 2. Connector relays to **on-prem NDES server**
 3. Certificate is issued via SCEP
 4. Intune installs cert on device
 
-**🔹 Security Best Practices**
+** Security Best Practices**
 
 - Use **HTTPS-only communication**
 - Place NDES/Connector behind firewall + secure ACLs
@@ -695,16 +1043,16 @@ Provide certificates for:
 
 Critical to enabling **Zero Trust Wi-Fi onboarding** (as noted in your blogs), especially for **macOS/iOS and Android** where cert-based auth is preferred.
 
-#### 🗃️ 4. On-Prem App Deployment & Win32 Hosting Strategies
+#### 4. On-Prem App Deployment & Win32 Hosting Strategies
 
-**🔹 Hybrid App Delivery Needs**
+** Hybrid App Delivery Needs**
 
 For legacy or large Win32 apps not yet suitable for full cloud delivery:
 
 - App content may be **hosted on-prem**
 - Distribution still managed via **Intune or SCCM**
 
-**🔹 Key Options**
+** Key Options**
 
 **A. Intune Win32 App Hosting
 ## Application Deployment
@@ -827,154 +1175,6 @@ Use this matrix to:
 - Monitor success with **Endpoint Analytics**, **Update Compliance**, and **Security Baselines**
 </details>
 
-<details>
-<summary> <strong>Conditional Access & Network Enforcement -- Deep Dive</strong></summary>
-
-<br>
-
-This document provides a consolidated deep dive on **Conditional Access (CA)** and **Network Enforcement**, combining identity, device, and network signals to support **Zero Trust** principles—**never trust, always verify**. It integrates **Microsoft Entra ID (formerly Azure AD)**, **Intune**, **Microsoft Defender for Endpoint**, **VPN/Wi-Fi**, and **Network Access Control (NAC)**. This is aligned with the architecture and intent outlined in the Enterprise EUC Reference Architecture.
-
-## Strategic Purpose in Zero Trust EUC
-
-Conditional Access is the **policy engine** for EUC that makes dynamic access decisions based on:
-
-- Identity posture (user/group membership, risk level)
-- Device posture (compliance, join status, OS/platform)
-- Network context (trusted IPs, VPN/NAC, geolocation)
-- Real-time risk signals (from Defender or Entra ID Protection)
-- Application sensitivity (SaaS, internal, or critical workloads)
-
-The **core enforcement point (PEP)** is **Entra ID**, with conditional logic tightly coupled with **Intune**, **Defender for Endpoint**, and **network-based controls** to drive secure access to apps and data.
-
-## Core Capabilities & Enforcement Layers
-
-### 1. Policy-Based Access Control
-
-**What**: Centrally managed CA policies that combine identity, device, app, location, and risk signals.
-
-**How**: Defined using conditional logic:
-
-*If* user is in Group X, accessing App Y, from unmanaged device → *Then* require MFA + compliant device.
-
-Use Cases:
-
-- Enforce compliant & hybrid AAD-joined devices for Office 365, Salesforce, ServiceNow.
-- Block access from unsupported OS platforms or high-risk sign-ins.
-- Bypass MFA from trusted IP ranges or VPN.
-
-Best Practices:
-
-- Leverage **Named Locations** for geolocation- or IP-based rules.
-- Use **Entra ID Protection** for sign-in and user risk scoring.
-
-### 2. Device Compliance & Trust (Intune + Entra)
-
-**Device Requirements**:
-
-- Must be marked **compliant** (via Intune) or **Hybrid Azure AD Joined**.
-- Use **Device Filters** for fine-grained access (e.g., only iOS 16+ managed devices).
-
-**Example**: Block non-compliant BYO Windows/macOS/mobile devices from accessing sensitive workloads.
-
-### 3. Defender for Endpoint Risk-Based Access
-
-**Why**: Integrate **real-time device risk** posture into CA decisions.
-
-**Risk Enforcement Flow**:
-
-1. Defender detects device anomalies (AV status, vulnerabilities).
-2. Risk level (Low/Medium/High) sent to Entra ID.
-3. CA evaluates: High-risk → Block, Medium → Require MFA, Low → Allow.
-
-**Use Case**: Prevent access from compromised or vulnerable endpoints across any platform.
-
-### 4. Network-Aware Conditional Access
-
-**Techniques**:
-
-- Use **Named Locations**: Define trusted IPs (corporate offices, VPN gateways).
-- Configure **Conditional Access Filters**: OS type, client app, device platform.
-- Combine **NAC posture** + **network profile enforcement** to evaluate device trust before granting access.
-
-**Example Policies**:
-
-- Finance apps → accessible only from corporate Wi-Fi or trusted VPN.
-- Skip MFA from office IPs with validated NAC posture.
-
-### 5. Wi-Fi & VPN Enforcement via Intune
-
-**Wi-Fi Profiles**:
-
-- Push **802.1X** profiles using certificates (SCEP/PKCS).
-- Secure SSIDs with EAP-TLS or PEAP.
-
-**VPN Profiles**:
-
-- Define **Per-App VPN** for iOS/Android/Windows.
-- Integrate with 3rd-party VPN providers: Zscaler, Palo Alto, Cisco AnyConnect, F5 APM.
-
-**Policy**: Block access if VPN/Wi-Fi profiles are missing, misconfigured, or expired.
-
-## Mapping to EUC Architecture Pillars
-
-| **Pillar** | **Role of CA & Enforcement** |
-|------------|------------------------------|
-| **Identity Trust** | Entra ID + Conditional Access + Entra ID Protection |
-| **Device Trust** | Intune Compliance + Defender Risk + Device Filters |
-| **App Delivery** | App access governed by per-platform CA policies |
-| **Data Protection** | Trusted Wi-Fi, Per-App VPN, Network Restrictions |
-| **Zero Trust** | Runtime enforcement—identity, device, and network |
-
-## Architecture Workflow Example
-
-**Conditional Access Evaluation**:
-
-1. User requests app access (e.g., Microsoft 365).
-2. Entra ID triggers evaluation:
-   - Is user/group risky?
-   - Is device compliant + hybrid-joined?
-   - Trusted network IP/VPN/NAC?
-   - Device risk from Defender?
-3. Access Control Decision:
-   - ✅ Allow with MFA
-   - 🚫 Block access
-   - ⚠️ Require compliant device or VPN
-
-## Real-World Conditional Access Scenarios
-
-| **Scenario** | **Policy Logic** |
-|--------------|------------------|
-| Block risky mobile access | Device risk = High AND platform = iOS/Android → Block access |
-| Require compliant device for SharePoint | App = SharePoint AND device NOT compliant → Block access |
-| BYO access (Outlook + MAM only) | Platform = iOS AND unmanaged → Allow Outlook only + App Protection Policy |
-| Bypass MFA in trusted office | IP = Named Location (office/VPN) → Skip MFA |
-| Finance app via VPN only | Require device on trusted IP + Per-App VPN profile |
-
-## Maturity Model
-
-| **Level** | **Capability Description** |
-|-----------|----------------------------|
-| 1️⃣ Basic | Manual MFA enforcement; no device or risk evaluation |
-| 2️⃣ Intermediate | Conditional Access with device compliance and named locations |
-| 3️⃣ Advanced | Integrated Defender risk + platform-specific app control |
-| 4️⃣ Optimized | Full runtime policy enforcement with automation (Sentinel, Intune, etc.) |
-
-## Reporting, Simulation & Policy Analytics
-
-- **Entra Sign-In Logs**: See each login's CA policy result.
-- **Azure Monitor & Sentinel**: Correlate CA failures or non-compliant devices.
-- **Policy Analytics (Preview)**: Simulate and test policy impact before rollout.
-- **Workbooks**: Dashboards for blocked attempts, high-risk users, and app-specific access patterns.
-
-## Admin Tools & Portals
-
-| **Tool** | **Functionality** |
-|----------|-------------------|
-| Entra Admin Center | Define, simulate, and analyze Conditional Access policies |
-| Intune Admin Center | Deploy VPN/Wi-Fi profiles, enforce compliance policies |
-| Defender Security Portal | View device health and risk posture |
-| Azure Monitor / Sentinel | Monitor CA outcomes, trigger alerts on violations |
-</details>
 **Microsoft links:**
 
 [CyberAutomationX](https://github.com/CyberAutomationX)/[SecureAzCloud-Scripts](https://github.com/CyberAutomationX/SecureAzCloud-Scripts)
