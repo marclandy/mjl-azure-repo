@@ -114,10 +114,6 @@ On-prem app deployment and Win32 app hosting via line-of-business strategies.
 
 ## Appendix:
 
-Microsoft Links
-
-[CyberAutomationX](https://github.com/CyberAutomationX)/[SecureAzCloud-Scripts](https://github.com/CyberAutomationX/SecureAzCloud-Scripts)
-
 ## Technical Deep Dive for Network/Infra Architects
 <details>
 <summary> <strong>Conditional Access & Network Enforcement -- Deep Dive</strong></summary>
