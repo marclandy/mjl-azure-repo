@@ -290,4 +290,4 @@
 
 Questions & Discussion
 ---
-[Network diagram showing routing through NVA in Hub VNets with regions, VMs, MSEE routers in hairpin pattern](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option%201%20Standard%20MSEE%20Hairpin.png)
+[Test](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option%201%20Standard%20MSEE%20Hairpin.png)
