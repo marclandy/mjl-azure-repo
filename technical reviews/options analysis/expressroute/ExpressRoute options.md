@@ -17,6 +17,9 @@
 
 ---
 
+## Reference, 
+AzureNetworking-ExRCheatSheet, https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/AzureNetworking-ExRCheatSheet-v1-2.pdf
+
 ## Executive Summary
 
 ### Business Context
@@ -312,16 +315,6 @@
 
 ---
 
-<details>
-<summary> <strong>Option1</strong></summary>
-
-![Test](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option-1-Standard-MSEE-Hairpin.png)
-
----
-
-<br>
-
-</details>
 
 
 
