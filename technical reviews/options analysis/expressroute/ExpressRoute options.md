@@ -61,10 +61,17 @@
   - Higher latency (5-15ms penalty)
   - Potential bandwidth bottlenecks
   - Additional charges for outbound data
+<details>
+<summary> <strong>Option1</strong></summary>
+
+![Option1](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option-1-Standard-MSEE-Hairpin.png)
 
 ---
 
-## Technical Options Analysis
+<br>
+
+</details>
+---
 
 ### Option 2: Cross-Connection Peering
 - **Description**: Direct connectivity between ExpressRoute circuits without hairpin
@@ -76,10 +83,17 @@
   - More complex setup
   - Requires additional ExpressRoute circuits
   - Higher monthly circuit costs
+<details>
+<summary> <strong>Option2</strong></summary>
+
+![Option2](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option-1-Standard-MSEE-Hairpin.png)
 
 ---
 
-## Technical Options Analysis
+<br>
+
+</details>
+---
 
 ### Option 3: Hub-and-Spoke with Azure Virtual WAN
 - **Description**: Leveraging Azure Virtual WAN for optimized routing
@@ -92,7 +106,21 @@
   - Additional cost for Virtual WAN
   - More complex initial setup
   - Learning curve for operations teams
+<details>
+<summary> <strong>Option3a</strong></summary>
 
+![Option3a](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option-1-Standard-MSEE-Hairpin.png)
+
+<br>
+
+</details>
+<summary> <strong>Option3b</strong></summary>
+
+![Option3b](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option-1-Standard-MSEE-Hairpin.png)
+
+<br>
+
+</details>
 ---
 
 ## Technical Options Analysis
@@ -280,15 +308,6 @@
 - Success criteria validation
 
 ---
-
-## Thank You
-
-### Contact Information
-- Project Lead: [Name]
-- Technical Lead: [Name]
-- Business Sponsor: [Name]
-
-## Questions & Discussion
 
 <details>
 <summary> <strong>Option1</strong></summary>
