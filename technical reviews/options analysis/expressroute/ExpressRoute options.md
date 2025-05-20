@@ -289,3 +289,8 @@
 - Business Sponsor: [Name]
 
 Questions & Discussion
+
+# Option 1: Route the traffic via an NVA inside Hub VNets
+
+| ![Network diagram showing routing through NVA in Hub VNets with regions, VMs, MSEE routers in hairpin pattern](diagram_placeholder) | **Description:** Basic configuration with traffic routing through MSEE routers in hairpin pattern<br><br>**Pros:**<br>- Simplest implementation<br>- Minimal configuration changes<br>- Lower upfront costs<br><br>**Cons:**<br>- Higher latency (5-15ms penalty)<br>- Potential bandwidth bottlenecks<br>- Additional charges for outbound data |
+|---|---|
