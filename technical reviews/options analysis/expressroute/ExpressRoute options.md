@@ -85,16 +85,17 @@
 <details>
 <summary> <strong>Option2a</strong></summary>
 
-![Option2a](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option%202-Cross-Connection-Peering-Traditional-Peering.png)
+![Option2a: Cross-Connection-Peering-Traditional-Peering](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option%202-Cross-Connection-Peering-Traditional-Peering.png)
 
 ---
 
 <br>
 
 </details>
+<details>
 <summary> <strong>Option2b</strong></summary>
 
-![Option2b](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option%202-Cross-Connection-Peering-AVNM-Mesh.png)
+![Option2b: Cross-Connection-Peering-AVNM-Mesh](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option%202-Cross-Connection-Peering-AVNM-Mesh.png)
 
 ---
 
