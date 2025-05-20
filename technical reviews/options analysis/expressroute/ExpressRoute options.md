@@ -38,6 +38,7 @@
 - Traffic enters an MSEE router through one connection and exits through the same MSEE
 - Creates a "U-turn" or "hairpin" configuration in traffic flow
 - Often unintended but sometimes a necessary network design pattern
+- This default behavior is observed both within a single region (a single circuit with multiple VNet) and across multiple regions (multiple circuits with multiple VNet).
 
 ### Common Scenarios Requiring Hairpin
 - Multi-region connectivity without full-mesh ExpressRoute circuits
