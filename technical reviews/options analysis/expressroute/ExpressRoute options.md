@@ -288,8 +288,14 @@
 - Technical Lead: [Name]
 - Business Sponsor: [Name]
 
-Questions & Discussion
+## Questions & Discussion
 
+<details>
+<summary> <strong>Option1</strong></summary>
 ![Test](https://github.com/marclandy/mjl-azure-repo/blob/main/technical%20reviews/options%20analysis/expressroute/Option-1-Standard-MSEE-Hairpin.png)
-
+<br>
+</details>
 ---
+
+
+
