@@ -301,6 +301,29 @@
 
 </details>
 
+| Option 1: Standard MSEE Hairpin | Option 1: Standard MSEE Hairpin | Option 1: Standard MSEE Hairpin |
+|---|---|---|
+| Diagram | Analysis: Basic configuration with traffic routing through MSEE routers in hairpin pattern  
+**Pros:**  
+Simplest implementation  
+Minimal configuration changes  
+Lower upfront costs  
+**Cons:**  
+Higher latency (5-15ms penalty)  
+Potential bandwidth bottlenecks  
+Additional charges for outbound data | **Technical considerations:**  
+Use vnet peering b/w spoke & hub + use remote gw, allow gw transit.  
+Intra flow: IP forwarding within the hub VNets.  
+Each spoke VNet either requires a UDR to point to either remote spoke VNet prefix or default route 0.0.0.0/0, with next-hop as hub NVA.  
+Preferred implementation: default route to hub NVA as next-hop. This removes the need for manual UDR upon additional subnet creation.  
+Result: intent based routing, i.e., optimising all inter-VNet traffic through a customer FW appliance.  
+Inter-region flow: same approach is applicable.  
+Inter-region approach: global VNet peering to facilitate cross-region comms.  
+Same caveats: either summary route or UDR for each new destination prefix.  
+Alternative approach: to additional UDRs per new destinations: use an Azure ARS in combination with NVAs.  
+Same recommendations for Azure Firewall. |
+| Reference: inter-region topology using ARS | Reference: inter-region topology using ARS | Reference: inter-region topology using ARS |
 
+---
 
 
