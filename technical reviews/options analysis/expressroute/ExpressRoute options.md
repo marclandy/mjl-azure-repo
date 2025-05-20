@@ -44,6 +44,8 @@
 - Transit routing between different networks connected to same circuit
 - Connecting environments (prod/non-prod) through a single circuit
 - Geographic limitations in ExpressRoute availability
+- This common pattern, now deemed outdated involves advertising a summary route for inter-region (i.e. entire Vnet address prefix), adopting a boe-tie design,
+-   this design is fully documented here, Common design principles for a hub and spoke, https://github.com/microsoft/Common-Design-Principles-for-a-Hub-and-Spoke-VNET-Archiecture 
 
 ---
 
