@@ -120,7 +120,7 @@ On-prem app deployment and Win32 app hosting via line-of-business strategies.
 
 <br>
 
-This document provides a consolidated deep dive on **Conditional Access (CA)** and **Network Enforcement**, combining identity, device, and network signals to support **Zero Trust** principles—**never trust, always verify**. It integrates **Microsoft Entra ID (formerly Azure AD)**, **Intune**, **Microsoft Defender for Endpoint**, **VPN/Wi-Fi**, and **Network Access Control (NAC)**. This is aligned with the architecture and intent outlined in the Enterprise EUC Reference Architecture.
+Purpose: **Conditional Access (CA)** and **Network Enforcement**, combining identity, device, and network signals to support **Zero Trust** principles—**never trust, always verify**. It integrates **Microsoft Entra ID (formerly Azure AD)**, **Intune**, **Microsoft Defender for Endpoint**, **VPN/Wi-Fi**, and **Network Access Control (NAC)**. 
 
 ## Strategic Purpose in Zero Trust EUC
 
@@ -535,7 +535,7 @@ This integration allows **Cisco ISE** to query Intune for **real-time device com
 
 #### 2.  Endpoint Security Controls via Intune
 
-Network architects should understand **Intune's policy enforcement at the endpoint**, especially as it affects posture assessment.
+**Intune's policy enforcement at the endpoint**, this impacts posture assessment.
 
 ** Endpoint Security Policy Types:**
 
@@ -829,7 +829,7 @@ The **"Monitoring, Reporting & Alerts"** capability ensures:
 - Integration with **SIEM/SOAR** pipelines for automated response
 - Confidence in **policy enforcement, app delivery, and user experience**
 
-This aligns directly with your reference architecture's **EUC Operations**, **Zero Trust enforcement**, and **device trust pillar** by enabling **automated observability**.
+This aligns directly with **EUC Operations**, **Zero Trust enforcement**, and **device trust pillar** by enabling **automated observability**.
 
 **Key Capability Breakdown**
 
