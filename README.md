@@ -1,12 +1,8 @@
 # mjl-enterprise-repo
-technical components
-
-network 
-
-security
-
-iam
-
-integration
-
-data
+building blocks
+-network 
+-infrastructure
+-security
+-iam
+-data
+-integration
