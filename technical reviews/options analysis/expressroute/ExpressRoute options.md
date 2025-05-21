@@ -315,7 +315,24 @@ AzureNetworking-ExRCheatSheet, https://github.com/marclandy/mjl-azure-repo/blob/
 
 ---
 
+## Azure ExpressRoute – Product Comparison (Including AVS)
 
+| Feature / Criteria                | ExpressRoute Standard                              | ExpressRoute Premium                                 | ExpressRoute Direct                              | AVS ExpressRoute Circuit                         |
+|----------------------------------|----------------------------------------------------|------------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| **Use Case**                     | Single-region or regional access                   | Multi-region or global access                       | Dedicated, high-throughput connectivity          | Private connectivity for Azure VMware Solution   |
+| **Peering Model**                | Microsoft & Private Peering                        | Microsoft & Private Peering                         | Private Peering (bypasses Microsoft Edge)        | Private Peering                                  |
+| **Circuit Bandwidths**           | 50 Mbps to 10 Gbps                                 | Same as Standard                                     | 10 Gbps or 100 Gbps                              | 1 Gbps, 2 Gbps, 5 Gbps, 10 Gbps                   |
+| **Global Reach Support**         | Yes                                                | Yes                                                  | Yes                                              | Yes                                              |
+| **Access to Microsoft Cloud**    | Regional (same geopolitical boundary)              | Global (cross geopolitical boundaries allowed)       | Bypass Microsoft Edge, direct to Azure core      | Tied to AVS Private Cloud region                 |
+| **Routing Domains**              | Up to 10,000 routes                                | Up to 10,000 routes                                  | High scale – defined by port speed               | Fixed for AVS – no user customization            |
+| **BGP Sessions per Peering**     | 4                                                  | 4                                                    | Up to 8 BGP sessions per 10 Gbps port            | Managed/Fixed by Microsoft                       |
+| **Redundancy**                   | Dual circuits recommended                          | Dual circuits recommended                            | Dual physical ports required                     | Microsoft-provided dual ExpressRoute circuits    |
+| **Latency SLA**                  | ~2–5 ms intra-region (varies)                      | ~2–5 ms intra-region (varies)                        | Ultra-low latency (<1 ms regionally)             | Optimized for AVS workload, low latency          |
+| **Premium Add-on Required?**     | No                                                 | Yes – for cross-region or global                     | No – built into product                          | Not applicable – bundled in AVS offer            |
+| **Integration with AVS**         | Indirect (via vNet peering)                        | Indirect (via vNet peering)                          | Yes – if extended to vNet connected to AVS       | Native – AVS supports only Private Peering       |
+| **Provisioning Model**          | Manual or automated via ARM/Bicep/Terraform        | Manual or automated via ARM/Bicep/Terraform          | Requires Microsoft/partner engagement            | AVS creates the circuit (customer links to it)   |
+| **Billing Model**                | Port + bandwidth based                             | Port + bandwidth + premium add-on                    | Port speed tier (10/100 Gbps)                    | Billed within AVS subscription bundle            |
+| **Ideal For**                    | Enterprises with regional workloads                | Enterprises with multi-region/global workloads       | Financial services, HPC, highly deterministic QoS | AVS deployments needing seamless private access  |
 
 
 
