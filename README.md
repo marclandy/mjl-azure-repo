@@ -1,5 +1,5 @@
-# mjl-azure-repo
-azure technical components
+# mjl-enterprise-repo
+technical components
 
 network 
 
