@@ -24,7 +24,6 @@ ZT Policy Layers
 | Access Control:| Device/User, Location, App Risk, Instance, Activity|
 | Data Protection & DLP:| Behavior, Data, Action|
 | Action:| Allow, Warn, Coach, Block, Prompt for MFA|
-|--------------|------------------|
 
 ### Evolution of SSE
 
