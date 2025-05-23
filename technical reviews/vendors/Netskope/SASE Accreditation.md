@@ -9,10 +9,10 @@
 - VPN:   secure remote access to corporate resources.
 
 ### SSE Functions
-- Web & Cloud Apps:           visibility and control
-- Remote Working:             modernize
-- Threat & risky Activity:    detect and mitigate
-- Identify & Protect:         sensitive data & information
+- Web & Cloud Apps:_           visibility and control
+- Remote Working:_             modernize
+- Threat & risky Activity:_    detect and mitigate
+- Identify & Protect:_         sensitive data & information
 
 ### Zero Trust Policy in Practice
 - Reduce attack surface
