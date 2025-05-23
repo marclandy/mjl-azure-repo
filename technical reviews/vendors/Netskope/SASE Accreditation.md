@@ -8,4 +8,4 @@
 | API Scan mode:| cloud delivered SaaS, proactive scan through cloud APIs|
 |               | data stored in the cloud|
 
----
+--
