@@ -3,6 +3,17 @@
 
 ## SSE < >
 
+### Origin of Security Service Edge
+- SWG:   secure web traffic, scan for malware & enforce sec polices.
+- CASB:  secure apps and data, visibility and control of cloud usage.
+- VPN:   secure remote access to corporate resources.
+
+### SSE Functions
+- Web & Cloud Apps:           visibility and control
+- Remote Working:             modernize
+- Threat & risky Activity:    detect and mitigate
+- Identify & Protect:         sensitive data & information
+
 ### Zero Trust Policy in Practice
 - Reduce attack surface
 - Focus on the protect surface
