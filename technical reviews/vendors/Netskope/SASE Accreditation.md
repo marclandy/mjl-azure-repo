@@ -1,5 +1,5 @@
 
-## SSE Modes: Visibility into Cloud & Web
+### SSE Modes: Visibility into Cloud & Web
 
 | **Mode** | **Function** |
 |--------------|------------------|
@@ -8,4 +8,4 @@
 | API Scan mode:| cloud delivered SaaS, proactive scan through cloud APIs|
 |               | data stored in the cloud|
 
---
+---
