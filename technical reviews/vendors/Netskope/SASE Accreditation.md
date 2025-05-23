@@ -37,7 +37,8 @@ ZT Policy Layers
 | Action:| Allow, Warn, Coach, Block, Prompt for MFA|
 
 ### Evolution of SSE
-
+- from Web Proxy to App Proxy
+  
 Web, 10% | SaaS 85% | IaaS 5%
 
 Inline Cloud Proxy
@@ -51,4 +52,8 @@ Inline Cloud Proxy
 | API Scan mode:| cloud delivered SaaS, proactive scan through cloud APIs|
 |               | data stored in the cloud|
 
+| **Forward Proxy** |
+| **PROs** | **CONs** |
+|---------|---------|
+|should provide visibility and contrl over web traffic, allowing orgs to monitor and filter access to cloud apps and web apps| latency and additional complexity to network infrastructure|
 ---
