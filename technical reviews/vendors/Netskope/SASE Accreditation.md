@@ -52,8 +52,9 @@ Inline Cloud Proxy
 | API Scan mode:| cloud delivered SaaS, proactive scan through cloud APIs|
 |               | data stored in the cloud|
 
-| **Forward Proxy** |
+### Forward Proxy
 | **PROs** | **CONs** |
 |---------|---------|
 |should provide visibility and contrl over web traffic, allowing orgs to monitor and filter access to cloud apps and web apps| latency and additional complexity to network infrastructure|
+
 ---
