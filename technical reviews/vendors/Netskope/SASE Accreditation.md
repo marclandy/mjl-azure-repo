@@ -1,7 +1,36 @@
 
-# SSE Modes: Visibility into Cloud & Web
+# SASE Acceleration
 
-## SSE Modes: Visibility into Cloud & Web
+## SSE < >
+
+### Zero Trust Policy in Practice
+- Reduce attack surface
+- Focus on the protect surface
+- Risk Mitigation: from Device/User to Action
+- All Destinations
+
+ZT Policy Layers
+- Device/User
+- Location
+- App Risk
+- Instance
+- Activity
+- Behavior
+- Data
+- Action
+
+| **Function** | **Components** |
+|--------------|------------------|
+| Access Control:| Device/User, Location, App Risk, Instance, Activity|
+| Data Protection & DLP:| Behavior, Data, Action|
+| Action:| Allow, Warn, Coach, Block, Prompt for MFA|
+|--------------|------------------|
+
+### Evolution of SSE
+
+Web, 10% | SaaS 85% | IaaS 5%
+
+Inline Cloud Proxy
 
 ### SSE Modes: Visibility into Cloud & Web
 
