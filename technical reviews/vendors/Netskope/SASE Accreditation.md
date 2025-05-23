@@ -1,4 +1,8 @@
 
+# SSE Modes: Visibility into Cloud & Web
+
+## SSE Modes: Visibility into Cloud & Web
+
 ### SSE Modes: Visibility into Cloud & Web
 
 | **Mode** | **Function** |
