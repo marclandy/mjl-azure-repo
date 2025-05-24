@@ -154,10 +154,13 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 
 <details>
 <summary> <strong>
+  
 ### Beyond the SOP
+
 </strong></summary>
 <br>
-- **Infrastructure Teams approach to taking a static SOP to an adaptive, automated, and scalable architecture:**
+
+**Infrastructure Teams approach to taking a static SOP to an adaptive, automated, and scalable architecture:**
 
 ### 1. Runbooks
 - Task-focused instructions derived from SOPs (e.g., *“How to offboard a compromised device”*).
@@ -195,4 +198,5 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 - Metrics derived from SOPs (e.g., *“Device onboarding must complete within 15 minutes”*).
 - Used for continuous improvement and platform health reviews.
 </details>
+
 ---
