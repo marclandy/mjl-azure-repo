@@ -6,6 +6,22 @@ author: Marc Landy
 categories: [enterprise, design, cisco ise, wireless]
 tags: [cisco ise]
 ---
+
+---
+layout: post
+title: "Cisco ISE NAC Configuration and Operations Guide"
+date: 2025-05-24
+categories: [Cisco, ISE, NAC, Zero Trust]
+tags: [ISE, NAC, Cisco, Wireless, BYOD, Guest, Security]
+author: NetworkOps
+---
+
+<style>
+  h2 { border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+  code { background-color: #f5f5f5; padding: 2px 4px; border-radius: 4px; }
+  pre { background-color: #f9f9f9; padding: 10px; border-left: 4px solid #007acc; overflow-x: auto; }
+</style>
+
 # Cisco ISE NAC Configuration and Operations Guide
 
 ## Configuration Guide
@@ -309,6 +325,78 @@ Avoid plaintext passwords — use Ansible Vault for secrets.
 Protect the SSH key or credentials with strict file permissions.
 
 3. ISE CLI Output: Policy Sets
+
+802.1X is a Port Based Network Access Control, defining 3 roles:
+
+Supplicant (station, client device),
+
+Authenticator (AP or WLC) and
+
+Authentication Server (RADIUS).
+
+Extensible Authentication Protocol (EAP) is the authentication framework supporting multiple methods such as PEAP, EAP-TLS, EAP-TTLS & more. It’s a datalink layer protocol, IP is not required. Additionally, Authenticator does not have to understand the authentication method.
+
+RADIUS carries AAA information between Authentication and RADIUS Server.
+
+Supplicant and Authenticator use EAPOL in wireless to exchange authentication data.
+
+Authenticator and Authentication Server talk over RADIUS.
+
+Both parts (EAPOL + RADIUS) form an authentication mechanism called 802.1X.
+
+Let’s see step by step what happens in the 802.1X EAP process:
+
+Open System Authentication:
+
+First the client and the AP go through 802.11 Open System Authentication, that is made up of 2 frame exchanges – client sends open auth to the AP & then the AP responds with open auth success.
+
+802.11 Association:
+
+Next in the frame exchange is 802.11 Association, this is also 2 frame exchanges – client sends association request to the AP & then the AP responds with an association response.
+
+802.1x EAP Authentication (below is based on EAP-TLS, but it will be similar for other EAP methods):
+
+Now we move on to the juicy part of the frame exchanges – “802.1X EAP authentication”. The first frame in this exchange is from the client which sends an “EAPOL start message” to the AP to start EAP authentication.
+
+The client is then asked for its identity in an “EAP Request/Identity” message from the AP.
+
+The client replies with an “EAP Response/Identity” message with its (dummy) user ID and the request to use TLS, which is forwarded to the RADIUS server.
+
+The RADIUS server, upon receiving the RADIUS access request & RADIUS access challenge (EAP Response/Identity message), starts the server-side TLS process by sending an EAP-TLS Start message to the client.
+
+The client responds with an EAP response – client hello message.
+
+The RADIUS server replies with an EAP Request message— a TLS server hello. It provides its certificate to the client, TLS protocol version, a cipher suite, and the client requests the certificate.
+
+The client validates the server certificate and responds with an EAP Response message that contains its certificate. This message starts the negotiation for cryptographic specifications – the cipher and compression algorithms.
+
+After the client certificate is validated, the RADIUS server responds with cryptographic specifications for the session.
+
+The client responds with an EAP-Response packet of EAP-Type = EAP-TLS with no data, notifying the RADIUS server that it has received the cryptographic specifications.
+
+The RADIUS server sends an EAP-Success message to the AP indicating successful authentication.
+
+The RADIUS server creates the session Master Key, also known as the PMK (Pairwise Master Key).
+
+The client also creates the PMK.
+
+4-Way Handshake:
+
+The client and the AP run the 4-way handshake to create the session keys. Which are:
+
+EAPOL Key Packet No.1(Authenticator Nonce) – Client calculated PTK
+
+EAPOL Key Packet No.2 (Supplicant Nonce, MIC) – Authenticator calculated PTK
+
+EAPOL Key Packet No.3 (Install PTK, MIC, Encrypted GTK)
+
+Now we have the GTK (Group Temporal Key) encrypted in the PTK.
+
+EAPOL Key Packet No. 4 (MIC)
+
+Voila! We now have fully established an encrypted 802.1X EAP-TLS session!
+
+We have also made a diagram of the process so you can visualise the above a bit easier!
 
 ---
 
