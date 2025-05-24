@@ -393,7 +393,7 @@ Using Conditional Access + Device Compliance:
 <details>
 <summary> <strong>Application Management in Microsoft Intune</strong></summary>
 <br>
-**Scope**: Covers both **Mobile Application Management (MAM)** and **Mobile Device Management (MDM)**-based app delivery across:
+- **Scope**: Covers both **Mobile Application Management (MAM)** and **Mobile Device Management (MDM)** based app delivery across:
 
 - **Windows 10/11 (Win32, MSI, UWP)**
 - **macOS**
