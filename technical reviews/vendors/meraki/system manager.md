@@ -99,6 +99,18 @@ The following SOPs define the **end-to-end lifecycle** of devices managed by Mer
 
 ---
 
+## 🚀 Infrastructure Teams : Maturity Model for Mobile Device Management
+
+Once SOPs and these deliverables are defined, the team can start evolving towards:
+
+| Maturity Level      | Characteristics                                                             |
+|---------------------|------------------------------------------------------------------------------|
+| **Standardized**     | SOPs and Runbooks followed consistently across teams                        |
+| **Automated**        | API workflows triggered based on lifecycle state changes                    |
+| **Integrated**       | Systems Manager connected with HR systems, ticketing, and IAM                |
+| **Self-Healing**     | Compliance failures trigger auto-remediation (e.g., network isolation)       |
+| **Optimized**        | Data from dashboard analytics used for proactive support and license tuning |
+
 ## 📘 Summary
 
 Meraki Systems Manager, when paired with enterprise-level governance, offers a unified approach to endpoint control, compliance, and automation. The design decisions and SOPs shared above support:
@@ -109,7 +121,9 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 
 ---
 
-## 📎 Appendix – Future Improvements
+### 📎 Appendix 
+
+## Future Improvements
 
 - Develop automated workflows using Meraki APIs (e.g., device quarantine, tag-based dynamic updates, ServiceNow integration).
 - Expand design decision table with platform-specific configurations (e.g., Apple Configurator, Android Enterprise).
@@ -117,3 +131,65 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
   - Technical design documents
   - Solution Architecture Documents (SADs) and High-Level Designs (HLDs)
   - MDM solution architecture reviews
+
+---
+
+## 🛠 Infrastructure Teams governance of SOPs
+
+### 1. Day-to-Day Operations
+- **Provisioning & Enrollment:** Technicians follow the SOP to onboard new devices consistently using ABM, Autopilot, or Zero-Touch.
+- **Security Enforcement:** Policies for encryption, password enforcement, and jailbreak detection are validated during audits or reviews.
+- **Compliance Monitoring:** Regular checks against SOP-defined posture evaluation (e.g., every 15 minutes) ensure devices remain compliant.
+
+### 2. Onboarding & Training
+- SOPs serve as a **training tool** for new engineers and service desk staff to standardize support processes.
+
+### 3. Audit & Governance
+- During compliance audits (ISO 27001, NIST, SOC 2), the SOP is submitted as evidence of a defined lifecycle management process.
+
+### 4. Automation Integration
+- Infrastructure automation (Ansible, Terraform, ServiceNow workflows) is often built to mirror or extend SOP steps for device states (e.g., onboarding triggers app install jobs).
+
+---
+
+### 🧩 Beyond the SOP
+
+> **Infrastructure Teams approach to taking a static SOP to an adaptive, automated, and scalable architecture:**
+
+### 1. 📘 Runbooks
+- Task-focused instructions derived from SOPs (e.g., *“How to offboard a compromised device”*).
+- Includes screenshots or API/CLI instructions.
+
+### 2. 🧭 Reference Architecture
+- Diagrammatic and descriptive view of Meraki Systems Manager integration with:
+  - Identity providers (Azure AD, Okta)
+  - Network enforcement (802.1X, RADIUS)
+  - API automation
+  - SIEM/logging stack
+
+### 3. 🔄 Workflow Diagrams
+- Visuals for enrollment flows, access control decisions, and remediation logic.
+- Often built in Lucidchart, draw.io, or Visio.
+
+### 4. 📜 Policy Matrix
+- Maps device types, user roles, and business units to:
+  - Security baselines
+  - App catalogs
+  - Network entitlements
+
+### 5. 📊 Reporting Dashboard Specification
+- Defines what compliance, lifecycle, and usage reports are required.
+- Links to SIEM, Power BI, or native Meraki dashboards.
+
+### 6. 🔧 API Playbooks
+- API-based scripts (Python, Postman collections, Ansible roles) to automate:
+  - Tag assignment
+  - Device quarantine
+  - License tracking
+  - Remote wipe/onboarding
+
+### 7. 🎯 SLAs and KPIs
+- Metrics derived from SOPs (e.g., *“Device onboarding must complete within 15 minutes”*).
+- Used for continuous improvement and platform health reviews.
+
+---
