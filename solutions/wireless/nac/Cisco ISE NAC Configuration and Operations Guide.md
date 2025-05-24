@@ -389,8 +389,7 @@ crontab -e
 Extensible Authentication Protocol (EAP) is the authentication framework supporting multiple methods such as PEAP, EAP-TLS, EAP-TTLS & more. It's a datalink layer protocol, IP is not required. Additionally, Authenticator does not have to understand the authentication method.
 
 | **802.1X-EAP-and-802.11-Security-Keys-Generation-Process** | **Step-by-Step 802.1X EAP Process** | 
-|--------------|--------------------------------------------|--------------------------------------|
-|![wifininjas.net](https://github.com/marclandy/enterprise-infra/blob/eb6bba75f678a06f36367962125945b6b234aa8d/solutions/wireless/nac/images/802.1X-EAP-and-802.11-Security-Keys-Generation-Process_wifininja.jpg)|
+| ![wifininjas.net](https://github.com/marclandy/enterprise-infra/blob/eb6bba75f678a06f36367962125945b6b234aa8d/solutions/wireless/nac/images/802.1X-EAP-and-802.11-Security-Keys-Generation-Process_wifininja.jpg) |
 
 #### Open System Authentication
 1. First the client and the AP go through 802.11 Open System Authentication, that is made up of 2 frame exchanges -- client sends open auth to the AP & then the AP responds with open auth success.
@@ -431,7 +430,7 @@ Extensible Authentication Protocol (EAP) is the authentication framework support
     - Now we have the GTK (Group Temporal Key) encrypted in the PTK
     - EAPOL Key Packet No. 4 (MIC)
 
-16. Voila! We now have fully established an encrypted 802.1X EAP-TLS session!|
+16. Voila! We now have fully established an encrypted 802.1X EAP-TLS session! |
 
 ## Security Considerations
 
