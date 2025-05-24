@@ -155,7 +155,7 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 <details>
 <summary> 
   
-### Beyond the SOP
+### 🖱️ Beyond the SOP
 
 </summary>
 <br>
