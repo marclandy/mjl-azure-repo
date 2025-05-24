@@ -134,7 +134,13 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 
 ---
 
-## Infrastructure Teams governance of SOPs
+<details>
+<summary> 
+  
+## 🖱️ Infrastructure Teams governance of SOPs
+
+</summary>
+<br>
 
 ### 1. Day-to-Day Operations
 - **Provisioning & Enrollment:** Technicians follow the SOP to onboard new devices consistently using ABM, Autopilot, or Zero-Touch.
@@ -150,12 +156,14 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 ### 4. Automation Integration
 - Infrastructure automation (Ansible, Terraform, ServiceNow workflows) is often built to mirror or extend SOP steps for device states (e.g., onboarding triggers app install jobs).
 
+</details>
+
 ---
 
 <details>
 <summary> 
   
-### 🖱️ Beyond the SOP
+## 🖱️ Beyond the SOP
 
 </summary>
 <br>
