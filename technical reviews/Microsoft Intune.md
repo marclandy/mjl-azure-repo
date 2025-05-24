@@ -112,6 +112,445 @@ On-prem app deployment and Win32 app hosting via line-of-business strategies.
 
 **Audit logs** and **compliance policies versioning**.
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Intune Features Overview</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1 {
+            color: #0078d4;
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        
+        .collapsible {
+            background-color: #f8f9fa;
+            color: #0078d4;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .collapsible:hover {
+            background-color: #e9ecef;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .collapsible.active {
+            background-color: #0078d4;
+            color: white;
+        }
+        
+        .arrow {
+            transition: transform 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .collapsible.active .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: white;
+            border-left: 4px solid #0078d4;
+        }
+        
+        .content.active {
+            max-height: 1000px;
+            padding: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #0078d4;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .feature-column {
+            width: 30%;
+            font-weight: 500;
+        }
+        
+        .description-column {
+            width: 70%;
+        }
+        
+        strong {
+            color: #0078d4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Microsoft Intune Features Overview</h1>
+    
+    <button class="collapsible">
+        Conditional Access & Network Enforcement (in conjunction with Entra ID / Azure AD)
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Policy-based access control</td>
+                    <td>Enforce <strong>user + device + app + location + risk</strong>-based access policies</td>
+                </tr>
+                <tr>
+                    <td>Compliant device requirements</td>
+                    <td>Require compliant or hybrid Azure AD-joined devices for access to corporate resources</td>
+                </tr>
+                <tr>
+                    <td>Microsoft Defender integration</td>
+                    <td>Integration with Microsoft Defender for Endpoint to enforce network access based on device risk</td>
+                </tr>
+                <tr>
+                    <td>Network-aware conditional access</td>
+                    <td>Can enforce <strong>trusted network</strong> or <strong>trusted IP ranges</strong></td>
+                </tr>
+                <tr>
+                    <td>VPN and Wi-Fi profiles</td>
+                    <td>Centrally push <strong>Wi-Fi SSIDs</strong>, <strong>802.1x certificates</strong>, and <strong>per-app VPN</strong> configurations</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Device Lifecycle Management (Windows, macOS, iOS, Android)
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Auto-enrollment</td>
+                    <td>Auto-enrollment via Azure AD Join / Windows Autopilot</td>
+                </tr>
+                <tr>
+                    <td>Zero Touch Provisioning</td>
+                    <td>ZTP for Windows Autopilot, Apple ADE, and Android Enterprise</td>
+                </tr>
+                <tr>
+                    <td>Remote actions</td>
+                    <td>Restart, lock, wipe, retire, locate, sync</td>
+                </tr>
+                <tr>
+                    <td>Device compliance policies</td>
+                    <td>Define health, encryption, OS version, rooted/jailbroken status</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Endpoint Configuration & Policy Enforcement
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Configuration profiles</td>
+                    <td>Security baselines, firewall settings, password rules, and more</td>
+                </tr>
+                <tr>
+                    <td>Endpoint Security policies</td>
+                    <td>BitLocker, AV/EDR, firewall, attack surface reduction</td>
+                </tr>
+                <tr>
+                    <td>Group policy migration tool</td>
+                    <td>Convert legacy GPOs to Intune-compatible profiles</td>
+                </tr>
+                <tr>
+                    <td>PowerShell scripts and Win32 apps</td>
+                    <td>PowerShell scripts and Win32 app deployments for deep customization</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Network and Connectivity Configuration
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Wi-Fi profiles with certificate auth</td>
+                    <td>Wi-Fi profiles with certificate-based auth (EAP-TLS, PEAP, etc.)</td>
+                </tr>
+                <tr>
+                    <td>VPN profiles</td>
+                    <td>Supports multiple vendors (Cisco, F5, Zscaler, Palo Alto, etc.)</td>
+                </tr>
+                <tr>
+                    <td>Per-app VPN</td>
+                    <td>Per-app VPN configuration for secure app-specific tunnels on iOS/macOS</td>
+                </tr>
+                <tr>
+                    <td>Proxy settings</td>
+                    <td>Proxy settings and network isolation controls (e.g., via Windows Information Protection)</td>
+                </tr>
+                <tr>
+                    <td>NPS / RADIUS integration</td>
+                    <td>Integration with NPS / RADIUS for 802.1x enforcement</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Application Management (Including MAM without enrollment)
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Managed app policies</td>
+                    <td>Intune App Protection for Outlook, Edge, Teams, etc.</td>
+                </tr>
+                <tr>
+                    <td>App VPNs and data protection</td>
+                    <td>App VPNs and data leakage protection for unmanaged BYO devices</td>
+                </tr>
+                <tr>
+                    <td>Data loss prevention controls</td>
+                    <td>Block copy/paste, save-as, screen capture, etc.</td>
+                </tr>
+                <tr>
+                    <td>Multi-platform app deployment</td>
+                    <td>Deploy and manage Win32, MSI, UWP, iOS, and Android apps</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Endpoint Security & Zero Trust Integration
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Microsoft Defender for Endpoint</td>
+                    <td>Native integration with Microsoft Defender for Endpoint (device risk signals)</td>
+                </tr>
+                <tr>
+                    <td>Microsoft Purview</td>
+                    <td>Native integration with Microsoft Purview (data loss prevention)</td>
+                </tr>
+                <tr>
+                    <td>NAC integrations</td>
+                    <td>Cisco ISE, F5 APM via compliance API</td>
+                </tr>
+                <tr>
+                    <td>Zero Trust Network Access</td>
+                    <td>Supports ZTNA principles with granular device controls</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Monitoring, Reporting & Alerts
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Device compliance dashboards</td>
+                    <td>Real-time compliance status monitoring</td>
+                </tr>
+                <tr>
+                    <td>Real-time reporting</td>
+                    <td>Configuration drift, app deployment, policy errors reporting</td>
+                </tr>
+                <tr>
+                    <td>Log Analytics integration</td>
+                    <td>Integration with Log Analytics / Azure Monitor and Microsoft Sentinel</td>
+                </tr>
+                <tr>
+                    <td>Security alerts</td>
+                    <td>Alerts for jailbreak/root detection, compromised devices, non-compliance</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Hybrid Integration with On-Prem Infrastructure
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Co-management</td>
+                    <td>Co-management with Configuration Manager (SCCM)</td>
+                </tr>
+                <tr>
+                    <td>Hybrid Azure AD Join</td>
+                    <td>Hybrid Azure AD Join support for GPO + Intune coexistence</td>
+                </tr>
+                <tr>
+                    <td>Certificate deployment</td>
+                    <td>Support for on-prem certificate deployment via Intune Connector for SCEP/NDES</td>
+                </tr>
+                <tr>
+                    <td>On-prem app deployment</td>
+                    <td>On-prem app deployment and Win32 app hosting via line-of-business strategies</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="collapsible">
+        Automation and Governance
+        <span class="arrow">▼</span>
+    </button>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="feature-column">Feature</th>
+                    <th class="description-column">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Role-based access control</td>
+                    <td>RBAC within Intune and MEM</td>
+                </tr>
+                <tr>
+                    <td>Scripted deployments</td>
+                    <td>Scripted deployments using Graph API / PowerShell SDK</td>
+                </tr>
+                <tr>
+                    <td>Policy as Code</td>
+                    <td>Policy as Code via Azure DevOps pipelines, GitHub Actions, or Terraform for Intune</td>
+                </tr>
+                <tr>
+                    <td>Audit and compliance</td>
+                    <td>Audit logs and compliance policies versioning</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const collapsibles = document.querySelectorAll('.collapsible');
+            
+            collapsibles.forEach(function(collapsible) {
+                collapsible.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    content.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
 ## Appendix:
 
 ## Technical Deep Dive for Network/Infra Architects
