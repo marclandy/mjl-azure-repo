@@ -393,24 +393,28 @@ Using Conditional Access + Device Compliance:
 <details>
 <summary> <strong>Application Management in Microsoft Intune</strong></summary>
 <br>
-- **Scope**: Covers both **Mobile Application Management (MAM)** and **Mobile Device Management (MDM)** based app delivery across:
+# Mobile Application Management (MAM) and Mobile Device Management (MDM) Guide
+
+## Scope
+
+Covers both **Mobile Application Management (MAM)** and **Mobile Device Management (MDM)**-based app delivery across:
 
 - **Windows 10/11 (Win32, MSI, UWP)**
 - **macOS**
 - **iOS/iPadOS**
 - **Android (Enterprise & BYOD)**
 
-#### 1. Intune App Protection Policies (MAM Without Enrollment)
+## 1. Intune App Protection Policies (MAM Without Enrollment)
 
-**Use Case: BYOD / Personal Devices**
+### Use Case: BYOD / Personal Devices
 
 - No full device enrollment or corporate wipe
 - Controls **corporate data within apps only**
 
-**Core Capabilities**
+### Core Capabilities
 
-| **Control Type** | **Description** |
-|------------------|-----------------|
+| Control Type | Description |
+|--------------|-------------|
 | **Selective Wipe** | Wipe corporate data from apps (not device) |
 | **Copy/Paste Restrictions** | Block between managed and unmanaged apps |
 | **Save-As Restrictions** | Block saving to local or personal storage |
@@ -418,42 +422,42 @@ Using Conditional Access + Device Compliance:
 | **Data Transfer** | Block data sharing to non-managed apps |
 | **Conditional Access** | Require policy-compliant apps to access services |
 
-**Supported Apps**
+### Supported Apps
 
 - Microsoft 365: Outlook, Teams, Edge, OneDrive
 - **Line-of-Business Apps**: Wrapped with Intune SDK or via App Wrapping Tool
 - Third-party apps in **Intune MAM SDK ecosystem**
 
-**Platform Notes**
+### Platform Notes
 
-| **Platform** | **Notes** |
-|--------------|-----------|
+| Platform | Notes |
+|----------|-------|
 | **iOS/Android** | Full MAM-WE support via public app stores |
 | **macOS/Windows** | Primarily MDM-based; MAM is limited to Edge/Outlook (via Conditional Access) |
 
-✳ **Integration Tip from your blog**: MAM-WE maps well to **"Conditional Workspace"** patterns — e.g., users access corporate data through protected apps only, without a full device trust requirement.
+> ✳ **Integration Tip from your blog**: MAM-WE maps well to **"Conditional Workspace"** patterns --- e.g., users access corporate data through protected apps only, without a full device trust requirement.
 
-#### 2. Application Deployment Scenarios
+## 2. Application Deployment Scenarios
 
-**A. Windows Apps**
+### A. Windows Apps
 
-| **Type** | **Examples** | **Deployment Notes** |
-|----------|--------------|----------------------|
+| Type | Examples | Deployment Notes |
+|------|----------|------------------|
 | **Win32** | .exe, .ps1 | Most flexible. Use Win32 App Packaging Tool. |
 | **MSI** | Office, Adobe | Native support with detection rules |
 | **UWP** | Store apps | Direct from Microsoft Store integration |
 | **Microsoft Store for Business (MSfB)** | Legacy model, being deprecated (migrate to Winget) | |
 
-**B. macOS Apps**
+### B. macOS Apps
 
 - .pkg deployments
 - Post-install scripts for configuration
-- No store integration — requires sideloading apps or using Apple Business Manager + VPP
+- No store integration --- requires sideloading apps or using Apple Business Manager + VPP
 
-**C. iOS/iPadOS & Android Apps**
+### C. iOS/iPadOS & Android Apps
 
-| **Type** | **iOS/iPadOS** | **Android** |
-|----------|----------------|-------------|
+| Type | iOS/iPadOS | Android |
+|------|------------|---------|
 | **Store Apps** | Via Apple VPP | Managed Google Play |
 | **LOB Apps** | IPA via ABM | APK via Managed Play Store |
 | **Web Apps** | Web shortcuts with browser restrictions | Same |
@@ -461,30 +465,30 @@ Using Conditional Access + Device Compliance:
 
 These app types align well with your concept of **persona-driven app sets** (frontline vs knowledge workers).
 
-#### 3. App Protection Policy Enforcement Examples
+## 3. App Protection Policy Enforcement Examples
 
-| **Scenario** | **Policy** | **Effect** |
-|--------------|--------------|------------|
+| Scenario | Policy | Effect |
+|----------|--------|--------|
 | **BYOD access to Outlook** | MAM-WE with PIN + Save-as block | User can access Outlook, but cannot copy data to Notes app or save attachments to personal cloud |
 | **Managed Android kiosk** | App protection + device lock-down | Access limited to one managed app in single-app mode |
 | **Shared device in logistics** | Per-app sign-in with SSO + MAM | One device, multiple users, app policy controls per session |
 
-#### 4. App VPN, Per-App Networking & Data Leak Protection
+## 4. App VPN, Per-App Networking & Data Leak Protection
 
-**App-based VPN (iOS/Android)**
+### App-based VPN (iOS/Android)
 
 - Integrates with **Zscaler, Cisco AnyConnect, Palo Alto GlobalProtect**
 - Enforces VPN only for corporate apps (not whole device)
 - Reduces attack surface on unmanaged devices
 
-**DLP Integration**
+### DLP Integration
 
 - Intune App Protection enforces:
   - No sharing to unmanaged apps
   - No cloud sync outside approved services (e.g., OneDrive for Business)
 - App-based conditional launch (e.g., block if rooted, outdated OS, etc.)
 
-#### 5. Integration with Endpoint Protection and CA
+## 5. Integration with Endpoint Protection and CA
 
 - Conditional Access enforces:
   - App version compliance
@@ -496,10 +500,10 @@ These app types align well with your concept of **persona-driven app sets** (fro
 
 This maps directly to your **"identity, app, device" trust plane model** in the EUC Reference Architecture.
 
-#### 6. App Lifecycle Flow
+## 6. App Lifecycle Flow
 
-| **Lifecycle Stage** | **Intune Capability** |
-|---------------------|------------------------|
+| Lifecycle Stage | Intune Capability |
+|-----------------|-------------------|
 | **Procurement** | Microsoft Store, Apple VPP, Managed Play |
 | **Deployment** | Targeted groups, dynamic assignment |
 | **Configuration** | App config policies (Outlook mail settings, VPN profiles) |
@@ -507,10 +511,10 @@ This maps directly to your **"identity, app, device" trust plane model** in the 
 | **Update** | App version enforcement, detection rules |
 | **Retirement** | App removal or selective wipe for BYOD |
 
-#### 7. Architectural Alignment with Your Blog Posts
+## 7. Architectural Alignment with Your Blog Posts
 
-| **Architecture Concept** | **MAM/App Management Tie-In** |
-|--------------------------|------------------------------|
+| Architecture Concept | MAM/App Management Tie-In |
+|---------------------|---------------------------|
 | **Modern App Delivery** | Store-based, wrapped apps, Win32, zero trust-aware |
 | **Persona-Based App Delivery** | Role-based app assignments via dynamic groups |
 | **Cloud-Native Security** | MAM policies + Conditional Access + Defender Risk |
