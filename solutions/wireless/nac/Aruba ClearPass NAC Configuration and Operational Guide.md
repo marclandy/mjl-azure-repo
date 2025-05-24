@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Aruba ClearPass NAC Configuration and Operational Guide"
+date: 2025-05-24
+author: Marc Landy
+categories: [aruba clearpass, aruba wireless]
+---
 # Aruba ClearPass NAC Configuration and Operational Guide
 
 ## Table of Contents
