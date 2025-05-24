@@ -386,6 +386,8 @@ crontab -e
 - **Authenticator** (AP or WLC)
 - **Authentication Server** (RADIUS)
 
+![wifininjas.net](https://github.com/marclandy/enterprise-infra/blob/eb6bba75f678a06f36367962125945b6b234aa8d/solutions/wireless/nac/images/802.1X-EAP-and-802.11-Security-Keys-Generation-Process_wifininja.jpg)
+
 Extensible Authentication Protocol (EAP) is the authentication framework supporting multiple methods such as PEAP, EAP-TLS, EAP-TTLS & more. It's a datalink layer protocol, IP is not required. Additionally, Authenticator does not have to understand the authentication method.
 
 ### Step-by-Step 802.1X EAP Process
