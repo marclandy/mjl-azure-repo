@@ -126,12 +126,12 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 ## Future Improvements
 
 - Develop automated workflows using Meraki APIs (e.g., device quarantine, tag-based dynamic updates, ServiceNow integration).
-- Expand design decision table with platform-specific configurations (e.g., Apple Configurator, Android Enterprise).
+- Provide platform-specific configurations for each design MDM solution components (e.g., Apple Configurator, Android Enterprise).
 - Usage Note: This design decision table can serve as a base for:
-  - Technical design documents
   - Solution Architecture Documents (SADs) and High-Level Designs (HLDs)
   - MDM solution architecture reviews
-
+  - Technical design documents
+  
 ---
 
 <details>
