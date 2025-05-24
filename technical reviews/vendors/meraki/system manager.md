@@ -99,7 +99,7 @@ The following SOPs define the **end-to-end lifecycle** of devices managed by Mer
 
 ---
 
-## 🚀 Infrastructure Teams : Maturity Model for Mobile Device Management
+## Infrastructure Teams : Maturity Model for Mobile Device Management
 
 Once SOPs and these deliverables are defined, the team can start evolving towards:
 
@@ -111,7 +111,7 @@ Once SOPs and these deliverables are defined, the team can start evolving toward
 | **Self-Healing**     | Compliance failures trigger auto-remediation (e.g., network isolation)       |
 | **Optimized**        | Data from dashboard analytics used for proactive support and license tuning |
 
-## 📘 Summary
+## Summary
 
 Meraki Systems Manager, when paired with enterprise-level governance, offers a unified approach to endpoint control, compliance, and automation. The design decisions and SOPs shared above support:
 
