@@ -1,4 +1,13 @@
+---
+layout: post
+title: "Cisco ISE NAC Configuration and Operations Guide"
+date: 2025-05-24
+author: Marc Landy
+categories: [cisco ise, meraki wireless]
+---
 # Cisco ISE NAC Configuration and Operations Guide
+
+Note - This post is a shorten version, download the docx file for detailed step-by-step instructions. 
 
 A comprehensive guide for configuring and operating Cisco ISE (Identity Services Engine) with Network Access Control (NAC) for **Cisco ISE**, **Meraki**, **Intune**, and mixed **Centralised/Distributed** wireless models.
 
