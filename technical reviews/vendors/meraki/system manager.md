@@ -7,7 +7,7 @@ categories: [enterprise, design, meraki, mdm]
 tags: [meraki, systems manager, mdm, enterprise, design decisions, sop]
 ---
 
-## 🧭 Overview
+## Overview
 
 Deploying **Meraki Systems Manager (MSM)** at enterprise scale demands a structured, policy-driven design approach. With devices spanning corporate-owned, BYOD, and hybrid models, decisions must be made across multiple layers—identity, enrollment, network access, app management, and compliance.
 
@@ -15,7 +15,7 @@ This blog post details critical **design decision areas**, summarizes the choice
 
 ---
 
-## 📌 Summary Table – Key Design Decisions
+## Summary Table – Key Design Decisions
 
 The table below provides a high-level summary of each decision domain and its recommended approach for enterprise Meraki Systems Manager deployments.
 
@@ -38,7 +38,7 @@ The table below provides a high-level summary of each decision domain and its re
 
 The table below provides detailed justifications and options for each decision domain.
 
-### ✅ Meraki Systems Manager – Technical Design Decision Table
+### Meraki Systems Manager – Technical Design Decision Table
 
 | #  | Design Domain             | Key Decision Area                      | Options / Inputs                                                                                       | Recommended Approach                                           | Rationale                                                                                   |
 |----|---------------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -59,7 +59,7 @@ The table below provides detailed justifications and options for each decision d
 
 The following SOPs define the **end-to-end lifecycle** of devices managed by Meraki Systems Manager, from procurement to retirement.
 
-### 1. 🔍 Device Enrollment
+### 1. Device Enrollment
 
 - Leverage automated enrollment via ABM, Zero-Touch, or Windows Autopilot.
 - Devices must be tagged by:
@@ -68,30 +68,30 @@ The following SOPs define the **end-to-end lifecycle** of devices managed by Mer
   - Region
 - Devices must check in and receive baseline profiles within 5 minutes.
 
-### 2. 🔐 Compliance & Policy Enforcement
+### 2. Compliance & Policy Enforcement
 
 - Enforce passcode, encryption, jailbreak/root detection.
 - Apply role-based access and location-aware restrictions.
 - Compliance checks run every 15 minutes.
 
-### 3. 📦 App Deployment & Patch Management
+### 3. App Deployment & Patch Management
 
 - All core business apps distributed through VPP/Play Store.
 - Auto-update schedule configured weekly (e.g., Sunday midnight).
 - App blacklists must be enforced on non-compliant devices.
 
-### 4. 📡 Network Access Control
+### 4. Network Access Control
 
 - Device posture evaluated via Sentry before Wi-Fi access.
 - RADIUS integration enforces dynamic VLAN and device certificates.
 
-### 5. 📈 Monitoring, Logging & Reporting
+### 5. Monitoring, Logging & Reporting
 
 - Send logs to centralized SIEM (e.g., Splunk) via Syslog.
 - Non-compliant devices generate daily digest reports.
 - Security incidents escalate via integration with ServiceNow.
 
-### 6. ⚙️ Offboarding & Retirement
+### 6. Offboarding & Retirement
 
 - De-provisioning triggers remote wipe or enterprise reset.
 - Admins must remove licenses and archive logs for 90 days.
@@ -134,7 +134,7 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 
 ---
 
-## 🛠 Infrastructure Teams governance of SOPs
+## Infrastructure Teams governance of SOPs
 
 ### 1. Day-to-Day Operations
 - **Provisioning & Enrollment:** Technicians follow the SOP to onboard new devices consistently using ABM, Autopilot, or Zero-Touch.
@@ -152,43 +152,43 @@ Meraki Systems Manager, when paired with enterprise-level governance, offers a u
 
 ---
 
-### 🧩 Beyond the SOP
+### Beyond the SOP
 
 > **Infrastructure Teams approach to taking a static SOP to an adaptive, automated, and scalable architecture:**
 
-### 1. 📘 Runbooks
+### 1. Runbooks
 - Task-focused instructions derived from SOPs (e.g., *“How to offboard a compromised device”*).
 - Includes screenshots or API/CLI instructions.
 
-### 2. 🧭 Reference Architecture
+### 2. Reference Architecture
 - Diagrammatic and descriptive view of Meraki Systems Manager integration with:
   - Identity providers (Azure AD, Okta)
   - Network enforcement (802.1X, RADIUS)
   - API automation
   - SIEM/logging stack
 
-### 3. 🔄 Workflow Diagrams
+### 3. Workflow Diagrams
 - Visuals for enrollment flows, access control decisions, and remediation logic.
 - Often built in Lucidchart, draw.io, or Visio.
 
-### 4. 📜 Policy Matrix
+### 4. Policy Matrix
 - Maps device types, user roles, and business units to:
   - Security baselines
   - App catalogs
   - Network entitlements
 
-### 5. 📊 Reporting Dashboard Specification
+### 5. Reporting Dashboard Specification
 - Defines what compliance, lifecycle, and usage reports are required.
 - Links to SIEM, Power BI, or native Meraki dashboards.
 
-### 6. 🔧 API Playbooks
+### 6. API Playbooks
 - API-based scripts (Python, Postman collections, Ansible roles) to automate:
   - Tag assignment
   - Device quarantine
   - License tracking
   - Remote wipe/onboarding
 
-### 7. 🎯 SLAs and KPIs
+### 7. SLAs and KPIs
 - Metrics derived from SOPs (e.g., *“Device onboarding must complete within 15 minutes”*).
 - Used for continuous improvement and platform health reviews.
 
