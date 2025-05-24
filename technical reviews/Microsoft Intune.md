@@ -112,7 +112,6 @@ On-prem app deployment and Win32 app hosting via line-of-business strategies.
 
 **Audit logs** and **compliance policies versioning**.
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
