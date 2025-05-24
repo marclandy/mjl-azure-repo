@@ -6,6 +6,7 @@ author: Marc Landy
 categories: [aruba clearpass, aruba wireless]
 ---
 # Aruba ClearPass NAC Configuration and Operational Guide
+Note - This post is a shorten version, download the docx file for detailed step-by-step instructions.
 
 ## Table of Contents
 - [1. Aruba ClearPass 802.1X](#1-aruba-clearpass-8021x)
