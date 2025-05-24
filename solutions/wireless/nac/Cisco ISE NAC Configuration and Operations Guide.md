@@ -2,15 +2,6 @@
 layout: post
 title: "Cisco ISE NAC Configuration and Operations Guide"
 date: 2025-05-24
-author: Marc Landy
-categories: [enterprise, design, cisco ise, wireless]
-tags: [cisco ise]
----
-
----
-layout: post
-title: "Cisco ISE NAC Configuration and Operations Guide"
-date: 2025-05-24
 categories: [Cisco, ISE, NAC, Zero Trust]
 tags: [ISE, NAC, Cisco, Wireless, BYOD, Guest, Security]
 author: NetworkOps
